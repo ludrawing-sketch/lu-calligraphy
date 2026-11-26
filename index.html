@@ -417,7 +417,7 @@ const GB={
   name:"entry.1829003082",      // entry.xxxx（大名）
   msg:"entry.192093402",     // entry.xxxx（留言）
   contact:"entry.1055053376",   // entry.xxxx（聯絡方式，不公開）
-  csv:""        // 試算表「發布到網路」的 CSV 連結
+  csv:"https://docs.google.com/spreadsheets/d/e/2PACX-1vRmlxxszvf_XWxanNF8CbalNxIgdJBxDjxlwF-6OHIW5QVkXScxYaQheb8KKG_u6sC1xdIaAZPgHLVm/pub?gid=1914414881&single=true&output=csv"      // 試算表「發布到網路」的 CSV 連結
 };
 function csvRows(t){const r=[];let row=[],f='',q=false;for(let i=0;i<t.length;i++){const c=t[i];
   if(q){if(c=='"'){if(t[i+1]=='"'){f+='"';i++}else q=false}else f+=c}
