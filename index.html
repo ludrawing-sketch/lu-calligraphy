@@ -413,10 +413,10 @@ ENTRIES.forEach(en=>{
 
 /* 觀展留言：送到 Google 表單，經審核（試算表 E 欄填任何字）後由公開的 CSV 顯示 */
 const GB={
-  form:"",      // https://docs.google.com/forms/d/e/<ID>/formResponse
-  name:"",      // entry.xxxx（大名）
-  msg:"",       // entry.xxxx（留言）
-  contact:"",   // entry.xxxx（聯絡方式，不公開）
+  form:"https://docs.google.com/forms/d/e/1FAIpQLSfc4es14bF_06k1y9A2uKK9gspeVap62_k_EqLhDuAZy9QgsA/formResponse",      // https://docs.google.com/forms/d/e/<ID>/formResponse
+  name:"entry.1829003082",      // entry.xxxx（大名）
+  msg:"entry.192093402",     // entry.xxxx（留言）
+  contact:"entry.1055053376",   // entry.xxxx（聯絡方式，不公開）
   csv:""        // 試算表「發布到網路」的 CSV 連結
 };
 function csvRows(t){const r=[];let row=[],f='',q=false;for(let i=0;i<t.length;i++){const c=t[i];
