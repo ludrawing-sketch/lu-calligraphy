@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="金門書法家呂光浯的作品、經歷與農耕日常">
+<title>呂光浯書法</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@300;400;700&family=Noto+Serif+TC:wght@400;600;900&display=swap">
+<style>
+/* Layout: 一卷展開的手卷，直排標題貫穿，留白為主；作品如裱框立軸，農耕以節氣為序 */
+:root{
+  --paper:#eeece4;      /* 宣紙，略帶青灰 */
+  --paper-2:#e3e0d5;
+  --ink:#1d1f1c;        /* 松煙墨 */
+  --ink-soft:#55584f;
+  --line:#c9c5b8;
+  --seal:#b2322a;       /* 朱砂印泥 */
+  --field:#5d6b3c;      /* 稻田綠 */
+  --mount:#f7f6f1;      /* 裱褙 */
+  --font-brush:"LXGW WenKai TC","Kaiti TC","BiauKai","DFKai-SB","STKaiti",serif;
+  --font-serif:"Noto Serif TC","Songti TC","PMingLiU",serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#171816;--paper-2:#20221f;--ink:#e8e5da;--ink-soft:#a3a397;--line:#3a3c36;
+  --seal:#d4544a;--field:#9aac6c;--mount:#232521;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#171816;--paper-2:#20221f;--ink:#e8e5da;--ink-soft:#a3a397;--line:#3a3c36;
+  --seal:#d4544a;--field:#9aac6c;--mount:#232521;color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--font-serif);font-size:17px;line-height:1.85;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1080px;margin:0 auto}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--seal);outline-offset:3px}
+h1,h2,h3{font-weight:600;text-wrap:balance;margin:0}
+
+/* 頂部 */
+.nav{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:22px;flex-wrap:wrap;
+  font-family:var(--font-brush);font-size:18px}
+.nav .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+.nav ul a{text-decoration:none;color:var(--ink-soft)}
+.nav ul a:hover{color:var(--seal)}
+
+.seal{display:inline-grid;place-items:center;background:var(--seal);color:var(--mount);
+  font-family:var(--font-serif);font-weight:900;line-height:1;border-radius:3px}
+.seal.sm{width:30px;height:30px;font-size:17px}
+.seal.lg{width:64px;height:64px;font-size:20px;grid-template-columns:1fr 1fr;padding:6px;gap:0;writing-mode:vertical-rl}
+
+/* 開卷 */
+.hero{display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,6vw,80px);align-items:start;padding-block:40px 72px;border-bottom:1px solid var(--line)}
+.hero-name{writing-mode:vertical-rl;font-family:var(--font-brush);font-weight:700;font-size:clamp(72px,13vw,156px);
+  line-height:1.05;letter-spacing:.08em;margin:0;position:relative}
+.hero-name .seal{position:absolute;bottom:-20px;left:-58px;writing-mode:vertical-rl}
+.hero-body{padding-top:clamp(8px,4vw,48px);min-width:0}
+.eyebrow{font-family:var(--font-brush);font-size:15px;letter-spacing:.3em;color:var(--seal);margin:0 0 18px}
+.hero-body h2{font-family:var(--font-brush);font-weight:400;font-size:clamp(28px,4.4vw,46px);line-height:1.4;margin-bottom:24px}
+.hero-body p{max-width:34em;color:var(--ink-soft);margin:0 0 14px}
+.facts{display:flex;flex-wrap:wrap;gap:12px 36px;margin-top:34px;padding:0;list-style:none}
+.facts li{display:flex;flex-direction:column}
+.facts b{font-family:var(--font-brush);font-size:30px;font-weight:700;font-variant-numeric:tabular-nums}
+.facts span{font-size:13px;letter-spacing:.15em;color:var(--ink-soft)}
+
+/* 待補標記 */
+.todo{display:inline-block;font-size:12px;letter-spacing:.1em;color:var(--seal);border:1px dashed var(--seal);
+  border-radius:2px;padding:0 6px;line-height:1.7;vertical-align:middle;font-family:var(--font-serif)}
+
+/* 區塊標題：直排小標 + 橫排大標 */
+section{padding-block:80px}
+.sec-head{display:flex;align-items:flex-end;gap:20px;margin-bottom:40px;flex-wrap:wrap}
+.sec-head h2{font-family:var(--font-brush);font-size:clamp(34px,5vw,52px);font-weight:700;line-height:1.1}
+.sec-head .en{font-size:13px;letter-spacing:.25em;color:var(--ink-soft);padding-bottom:8px}
+.sec-head p{flex-basis:100%;margin:6px 0 0;color:var(--ink-soft);max-width:36em}
+
+/* 作品集 */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:34px}
+.filters button{font-family:var(--font-brush);font-size:17px;background:transparent;color:var(--ink-soft);
+  border:1px solid var(--line);padding:4px 16px;border-radius:2px;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.filters button:hover{border-color:var(--ink)}
+.works{columns:4 200px;column-gap:28px}
+.work{display:block;width:100%;break-inside:avoid;margin:0 0 36px;cursor:pointer;background:none;border:0;padding:0;text-align:left;color:inherit;font:inherit}
+.scroll{background:var(--paper-2);padding:10px;border-radius:2px;position:relative;
+  box-shadow:0 1px 0 var(--line),0 14px 24px -18px rgba(0,0,0,.35);transition:transform .3s ease}
+.work:hover .scroll{transform:translateY(-4px)}
+.scroll img{display:block;width:100%;height:auto;background:var(--mount)}
+.work figcaption{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-top:14px}
+.work .t{font-family:var(--font-brush);font-size:19px}
+.work .m{font-size:13px;color:var(--ink-soft);font-variant-numeric:tabular-nums;white-space:nowrap}
+.work[hidden]{display:none}
+.works-note{margin-top:30px;font-size:14px;color:var(--ink-soft)}
+
+/* 經歷 */
+.career{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:56px}
+.bio p{margin:0 0 16px;max-width:32em}
+.bio .quote{font-family:var(--font-brush);font-size:24px;line-height:1.6;border-left:2px solid var(--seal);padding-left:18px;margin:28px 0}
+.timeline{list-style:none;margin:0;padding:0;border-left:1px solid var(--line)}
+.timeline li{display:grid;grid-template-columns:72px 1fr;gap:14px;padding:0 0 26px 20px;position:relative}
+.timeline li::before{content:"";position:absolute;left:-4px;top:12px;width:7px;height:7px;background:var(--ink);border-radius:50%}
+.timeline li.award::before{background:var(--seal);border-radius:1px;transform:rotate(45deg)}
+.timeline .y{font-family:var(--font-brush);font-size:20px;font-variant-numeric:tabular-nums}
+.timeline .e{min-width:0}
+.timeline .e b{display:block;font-weight:600}
+.timeline .e span{font-size:14px;color:var(--ink-soft)}
+.legend{display:flex;gap:20px;font-size:13px;color:var(--ink-soft);margin:0 0 22px;flex-wrap:wrap}
+.legend i{display:inline-block;width:8px;height:8px;margin-right:6px;vertical-align:middle;background:var(--ink);border-radius:50%}
+.legend i.a{background:var(--seal);border-radius:1px;transform:rotate(45deg)}
+
+/* 農耕日常 */
+.farm{background:var(--paper-2);margin-left:calc(-1 * max(16px,env(safe-area-inset-left,0px)));margin-right:calc(-1 * max(16px,env(safe-area-inset-right,0px)));
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.farm .sec-head h2{color:var(--field)}
+.journal{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:36px 28px}
+.entry{margin:0;min-width:0}
+.photo{aspect-ratio:4/3;max-width:100%;background:var(--mount);border:1px solid var(--line);display:grid;place-items:center;position:relative;overflow:hidden}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.photo .lbl{position:relative;font-size:13px;color:var(--ink-soft);letter-spacing:.15em;background:var(--mount);padding:2px 10px}
+.entry .term{display:flex;align-items:baseline;gap:10px;margin-top:14px}
+.entry .term b{font-family:var(--font-brush);font-size:22px;color:var(--field)}
+.entry .term span{font-size:13px;color:var(--ink-soft);font-variant-numeric:tabular-nums}
+.entry p{margin:6px 0 0;font-size:15px;line-height:1.8}
+
+/* 結尾 */
+.colophon{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:end;padding-block:72px 56px;border-top:1px solid var(--line)}
+.colophon h2{font-family:var(--font-brush);font-size:30px;margin-bottom:12px}
+.colophon p{margin:0;color:var(--ink-soft);max-width:34em}
+.colophon .v{writing-mode:vertical-rl;font-family:var(--font-brush);font-size:22px;letter-spacing:.3em;color:var(--ink-soft)}
+footer{font-size:13px;color:var(--ink-soft);padding-block:0 32px}
+
+/* 放大檢視 */
+.viewer{position:fixed;inset:0;background:color-mix(in srgb,var(--paper) 94%,transparent);display:grid;place-items:center;z-index:20;
+  padding:calc(24px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) calc(24px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.viewer .box{display:flex;gap:40px;align-items:center;max-width:880px;width:100%;flex-wrap:wrap;justify-content:center}
+.viewer{overflow:auto}
+.viewer[hidden]{display:none}
+.viewer .big{display:block;max-height:80vh;max-width:100%;width:auto;height:auto;box-shadow:0 20px 40px -24px rgba(0,0,0,.5)}
+.viewer .info{min-width:0;flex:1 1 240px}
+.viewer .info h3{font-family:var(--font-brush);font-size:30px;margin-bottom:8px}
+.viewer dl{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;margin:18px 0;font-size:15px}
+.viewer dt{color:var(--ink-soft)}
+.viewer dd{margin:0}
+.viewer .close{position:absolute;top:calc(16px + env(safe-area-inset-top,0px));right:max(16px,env(safe-area-inset-right,0px));
+  background:var(--paper);border:1px solid var(--line);color:var(--ink);font-family:var(--font-brush);font-size:16px;padding:4px 14px;cursor:pointer;border-radius:2px;z-index:1}
+
+@media (max-width:820px){
+  .career{grid-template-columns:1fr}
+  .journal{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:540px){
+  body{font-size:16px}
+  .hero{grid-template-columns:1fr}
+  .hero-name{writing-mode:horizontal-tb;font-size:68px}
+  .hero-name .seal{position:static;margin-left:14px;vertical-align:middle}
+  .journal{grid-template-columns:1fr}
+  .works{columns:2;column-gap:16px}
+  .work{margin-bottom:24px}
+  .colophon{grid-template-columns:1fr}
+  .colophon .v{display:none}
+  section{padding-block:56px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<div class="wrap">
+  <nav class="nav" aria-label="主選單">
+    <a class="brand" href="#top"><span class="seal sm" aria-hidden="true">呂</span>呂光浯書法</a>
+    <ul>
+      <li><a href="#works">作品集</a></li>
+      <li><a href="#career">成就經歷</a></li>
+      <li><a href="#farm">農耕日常</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero" id="top">
+    <h1 class="hero-name">呂光浯<span class="seal lg" aria-hidden="true">光浯</span></h1>
+    <div class="hero-body">
+      <p class="eyebrow">金　門　·　書　法　·　農　耕</p>
+      <h2>白天下田，夜裡研墨。<br>幾十年，一筆一畫。</h2>
+      <p>呂光浯，金門人。這裡收著他多年來的書法作品、展覽與獲獎紀錄，也記下他在田裡的日子。字與土地，都是慢慢養出來的。</p>
+      <p><span class="todo">簡介待補</span>　這段文字之後會換成老爸自己的話，或家人為他寫的介紹。</p>
+      <ul class="facts">
+        <li><b>〇〇</b><span>年 習字</span></li>
+        <li><b>39</b><span>件 作品收錄</span></li>
+        <li><b>〇〇</b><span>次 展覽</span></li>
+        <li><b>〇〇</b><span>分地</span></li>
+      </ul>
+    </div>
+  </header>
+
+  <section id="works" aria-labelledby="works-h">
+    <div class="sec-head">
+      <h2 id="works-h">作品集</h2><span class="en">WORKS</span>
+      <p>多為乙巳（2025）、丙午（2026）年間新作。依書體瀏覽，點一下作品可放大細看。</p>
+    </div>
+    <div class="filters" role="group" aria-label="依書體篩選">
+      <button type="button" id="f-all" data-f="all" aria-pressed="true">全部</button>
+      <button type="button" id="f-kai" data-f="楷書" aria-pressed="false">楷書</button>
+      <button type="button" id="f-xing" data-f="行草" aria-pressed="false">行草</button>
+      <button type="button" id="f-li" data-f="隸書" aria-pressed="false">隸書</button>
+      <button type="button" id="f-dui" data-f="對聯" aria-pressed="false">對聯</button>
+    </div>
+    <div class="works" id="works-grid"></div>
+    <p class="works-note">題名與年份依落款辨識。<span class="todo">尺寸待補</span>　若有尺寸或創作心得，可以再補上。</p>
+  </section>
+
+  <section id="career" aria-labelledby="career-h" style="border-top:1px solid var(--line)">
+    <div class="sec-head">
+      <h2 id="career-h">成就與經歷</h2><span class="en">CAREER</span>
+    </div>
+    <div class="career">
+      <div class="bio">
+        <p>呂光浯是金門人。家鄉的文脈也留在他的字裡：他錄過明代金門鄉賢許獬「取天下第一等名位，不若辭之」的名句，臨過清代金門書家呂世宜的隸書，也以「學生光浯」的落款，寫下簡文龍老師的〈金中懷舊〉詩。</p>
+        <p>他楷、行草、隸書都寫，臨過漢隸與〈史晨後碑〉，也仿過文徵明的行書。</p>
+        <p><span class="todo">待補</span>　幾歲開始寫字、跟過哪位老師、什麼時候開始參展。</p>
+        <p class="quote">「寫字跟種田一樣，急不來。」</p>
+        <p><span class="todo">待補</span>　上面這句是示意，可以換成老爸常掛在嘴邊的一句話。也可以放他對書法的看法，或想留給晚輩的話。</p>
+      </div>
+      <div>
+        <p class="legend"><span><i></i>經歷・展覽</span><span><i class="a"></i>獲獎</span></p>
+        <ol class="timeline">
+          <li><span class="y">19〇〇</span><span class="e"><b>開始習字</b><span>啟蒙老師、最早臨的字帖 <span class="todo">待補</span></span></span></li>
+          <li><span class="y">19〇〇</span><span class="e"><b>拜師學藝</b><span>師承與學習經過 <span class="todo">待補</span></span></span></li>
+          <li class="award"><span class="y">19〇〇</span><span class="e"><b>第一次得獎</b><span>比賽名稱與名次 <span class="todo">待補</span></span></span></li>
+          <li><span class="y">20〇〇</span><span class="e"><b>首次個展</b><span>展覽名稱、地點 <span class="todo">待補</span></span></span></li>
+          <li class="award"><span class="y">20〇〇</span><span class="e"><b>重要獎項</b><span>獎項名稱 <span class="todo">待補</span></span></span></li>
+          <li><span class="y">20〇〇</span><span class="e"><b>聯展、書會、教學</b><span>參與的書會或開班授課 <span class="todo">待補</span></span></span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section id="farm" class="farm" aria-labelledby="farm-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="farm-h">農耕日常</h2><span class="en">FIELD NOTES</span>
+        <p>寫字之外，老爸在金門的紅土上種菜。蔥、高麗菜、地瓜葉、木瓜，一畦一畦都是自己整的。</p>
+      </div>
+      <div class="journal" id="journal"></div>
+      <p class="works-note">以上攝於 2026 年 11 月 5 日，霜降過後、立冬前兩天。</p>
+    </div>
+  </section>
+
+  <div class="colophon">
+    <div>
+      <h2>聯絡與收藏</h2>
+      <p>想欣賞原作、邀請展覽或洽詢墨寶，可以透過家人聯繫。<span class="todo">聯絡方式待補</span></p>
+    </div>
+    <div class="v" aria-hidden="true">筆耕　田耕</div>
+  </div>
+  <footer>© 呂光浯　·　網站由家人整理</footer>
+</div>
+
+<div class="viewer" id="viewer" hidden role="dialog" aria-modal="true" aria-labelledby="v-title">
+  <button type="button" class="close" id="v-close">關閉</button>
+  <div class="box">
+    <img class="big" id="v-big" alt="">
+    <div class="info">
+      <h3 id="v-title"></h3>
+      <dl>
+        <dt>原作</dt><dd id="v-src"></dd>
+        <dt>書體</dt><dd id="v-style"></dd>
+        <dt>落款</dt><dd id="v-year"></dd>
+        <dt>尺寸</dt><dd>待補</dd>
+      </dl>
+      <p style="color:var(--ink-soft);font-size:15px;margin:0">書者　呂光浯</p>
+    </div>
+  </div>
+</div>
+
+<script>
+const WORKS=[
+  {f:"w326",t:"般若波羅蜜多心經",a:"佛經",s:"楷書",y:"乙巳霜降（2025）"},
+  {f:"w355",t:"芝蘭生於幽谷",a:"古訓",s:"楷書",y:"丙午之春（2026）"},
+  {f:"w328",t:"清平調三首",a:"李白",s:"楷書",y:"乙巳霜降（2025）"},
+  {f:"w329",t:"青玉案・元夕",a:"辛棄疾",s:"楷書",y:"乙巳之秋（2025）"},
+  {f:"w333",t:"永遇樂・落日鎔金",a:"李清照",s:"楷書",y:"乙巳初冬（2025）"},
+  {f:"w324",t:"送魏萬之京・渡漢江",a:"李頎、李頻",s:"楷書",y:"乙巳中秋（2025）"},
+  {f:"w334",t:"錦瑟",a:"李商隱",s:"楷書",y:"未紀年"},
+  {f:"w332",t:"金中懷舊詩",a:"簡文龍老師",s:"楷書",y:"未紀年，款署「學生光浯」"},
+  {f:"w354",t:"歲月靜好",a:"語出《詩經》",s:"行草",y:"乙巳之冬（2025）"},
+  {f:"w351",t:"登樓賦（四條屏）",a:"王粲",s:"行草",y:"年份待確認"},
+  {f:"w340",t:"再別康橋",a:"徐志摩",s:"行草",y:"乙巳初冬（2025）"},
+  {f:"w342",t:"短歌行",a:"曹操",s:"行草",y:"乙巳立冬（2025）"},
+  {f:"w349",t:"懷素上人草書歌",a:"戴叔倫",s:"行草",y:"乙巳初冬（2025）"},
+  {f:"w323",t:"春夜宴從弟桃花園序",a:"李白",s:"行草",y:"乙巳仲夏（2025）"},
+  {f:"w322",t:"宣州謝朓樓餞別校書叔雲",a:"李白",s:"行草",y:"乙巳仲夏（2025）"},
+  {f:"w321",t:"早寒有懷",a:"孟浩然",s:"行草",y:"乙巳之秋（2025）"},
+  {f:"w330",t:"夏日南亭懷辛大",a:"孟浩然",s:"行草",y:"乙巳之秋（2025）"},
+  {f:"w331",t:"過故人莊",a:"孟浩然",s:"行草",y:"乙巳立冬（2025）"},
+  {f:"w325",t:"入若耶溪",a:"崔顥",s:"行草",y:"未紀年"},
+  {f:"w352",t:"春日憶李白",a:"杜甫",s:"行草",y:"未紀年"},
+  {f:"w338",t:"客中行",a:"李白",s:"行草",y:"乙巳初冬（2025）"},
+  {f:"w343",t:"秋登宣城謝脁北樓",a:"李白",s:"行草",y:"未紀年"},
+  {f:"w341",t:"春雪",a:"韓愈",s:"行草",y:"乙巳初冬（2025）"},
+  {f:"w345",t:"泊船瓜洲",a:"王安石",s:"行草",y:"乙巳初冬（2025）"},
+  {f:"w346",t:"半山春晚即事",a:"王安石",s:"行草",y:"乙巳之冬（2025）"},
+  {f:"w347",t:"采桑子・群芳過後西湖好",a:"歐陽修",s:"行草",y:"乙巳（2025）"},
+  {f:"w348",t:"滕王閣序（節錄）",a:"王勃，仿文徵明",s:"行草",y:"未紀年"},
+  {f:"w344",t:"歲暮歸南山",a:"孟浩然",s:"行草",y:"未紀年"},
+  {f:"w350",t:"楚鄉雲水內",a:"盧綸",s:"行草",y:"未紀年，款署「金門」"},
+  {f:"w337",t:"第一等人品",a:"金門鄉賢許獬",s:"行草",y:"未紀年"},
+  {f:"w359",t:"雅歌吹笙",a:"臨〈史晨後碑〉",s:"隸書",y:"丙午之夏（2026）"},
+  {f:"w339",t:"王孫季子",a:"臨呂世宜",s:"隸書",y:"乙巳初冬（2025）"},
+  {f:"w335",t:"黃鶴樓送孟浩然之廣陵",a:"李白",s:"隸書",y:"乙巳之秋（2025）"},
+  {f:"w336",t:"天王執政",a:"臨漢隸",s:"隸書",y:"乙巳初冬（2025）"},
+  {f:"w327",t:"初雖啼號",a:"仿漢隸",s:"隸書",y:"乙巳（2025）"},
+  {f:"w358",t:"傳家有道惟存厚・處世無奇但率真",a:"春聯",s:"對聯",y:"丙午立夏（2026）"},
+  {f:"w357",t:"抱樸含真稱心易足",a:"七言聯",s:"對聯",y:"丙午之夏（2026）"},
+  {f:"w356",t:"世事每從寬處樂・人倫常在忍中全",a:"七言聯",s:"對聯",y:"丙午穀雨（2026）"},
+  {f:"w353",t:"鳥隨鳳凰飛能遠・人伴賢良品自高",a:"錄《濟公全傳》",s:"對聯",y:"乙巳之冬（2025）"}
+];
+const grid=document.getElementById('works-grid');
+WORKS.forEach((w,i)=>{
+  const b=document.createElement('button');
+  b.type='button';b.className='work';b.dataset.s=w.s;b.dataset.i=i;
+  b.setAttribute('aria-label',w.t+'，'+w.s+'，點擊放大');
+  b.innerHTML=`<div class="scroll"><img src="works/${w.f}.jpg" alt="呂光浯${w.s}〈${w.t}〉" loading="lazy"></div>
+  <figcaption><span class="t">${w.t}</span><span class="m">${w.a}・${w.s}</span></figcaption>`;
+  grid.appendChild(b);
+});
+document.querySelectorAll('.filters button').forEach(btn=>btn.addEventListener('click',()=>{
+  const f=btn.dataset.f;
+  document.querySelectorAll('.filters button').forEach(x=>x.setAttribute('aria-pressed',x===btn));
+  grid.querySelectorAll('.work').forEach(w=>{w.hidden=!(f==='all'||w.dataset.s===f)});
+}));
+const V=document.getElementById('viewer');let lastFocus=null;
+grid.addEventListener('click',e=>{
+  const b=e.target.closest('.work');if(!b)return;const w=WORKS[b.dataset.i];lastFocus=b;
+  const im=document.getElementById('v-big');im.src='works/'+w.f+'.jpg';im.alt='呂光浯'+w.s+'〈'+w.t+'〉';
+  document.getElementById('v-title').textContent=w.t;
+  document.getElementById('v-style').textContent=w.s;
+    document.getElementById('v-year').textContent=w.y;
+  document.getElementById('v-src').textContent=w.a;
+  V.hidden=false;document.getElementById('v-close').focus();
+});
+function closeV(){V.hidden=true;lastFocus&&lastFocus.focus()}
+document.getElementById('v-close').addEventListener('click',closeV);
+V.addEventListener('click',e=>{if(e.target===V)closeV()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!V.hidden)closeV()});
+
+const ENTRIES=[
+  {f:"f362",h:"青蔥",txt:"一整排青蔥長得正茂，綠得發亮。"},
+  {f:"f365",h:"蔥苗",txt:"新插下的蔥苗，一株一株排在紅土上。"},
+  {f:"f361",h:"高麗菜苗",txt:"上排是剛種下的高麗菜苗，下排是細細的蔥苗。"},
+  {f:"f364",h:"一畦一畦",txt:"畦整得整整齊齊，菜苗剛種下，前面是木瓜。"},
+  {f:"f363",h:"午後",txt:"太陽斜照，竹竿的影子落在蔥畦上。"},
+  {f:"f366",h:"新整的畦",txt:"剛翻好的土畦等著下種，旁邊是一片地瓜葉。"}
+];
+const J=document.getElementById('journal');
+ENTRIES.forEach(en=>{
+  const f=document.createElement('figure');f.className='entry';
+  f.innerHTML=`<div class="photo"><img src="farm/${en.f}.jpg" alt="${en.h}：${en.txt}" loading="lazy"></div>
+  <figcaption><div class="term"><b>${en.h}</b><span>2026.11.5</span></div><p>${en.txt}</p></figcaption>`;
+  J.appendChild(f);
+});
+</script>
