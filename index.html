@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="金門書法家呂光浯的作品、經歷與農耕日常">
-<title>呂光浯書法</title>
+<meta name="description" content="筆耕・田耕——呂光浯書法線上個展。金門書法家呂光浯近年楷書、行草、隸書與對聯作品三十九件。">
+<title>筆耕・田耕｜呂光浯書法線上個展</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -60,6 +60,7 @@ h1,h2,h3{font-weight:600;text-wrap:balance;margin:0}
 .hero-body{padding-top:clamp(8px,4vw,48px);min-width:0}
 .eyebrow{font-family:var(--font-brush);font-size:15px;letter-spacing:.3em;color:var(--seal);margin:0 0 18px}
 .hero-body h2{font-family:var(--font-brush);font-weight:400;font-size:clamp(28px,4.4vw,46px);line-height:1.4;margin-bottom:24px}
+.hero-body .sub{font-family:var(--font-brush);font-size:clamp(18px,2.2vw,22px);letter-spacing:.2em;color:var(--ink);margin:-12px 0 22px}
 .hero-body p{max-width:34em;color:var(--ink-soft);margin:0 0 14px}
 .facts{display:flex;flex-wrap:wrap;gap:12px 36px;margin-top:34px;padding:0;list-style:none}
 .facts li{display:flex;flex-direction:column}
@@ -83,22 +84,31 @@ section{padding-block:80px}
   border:1px solid var(--line);padding:4px 16px;border-radius:2px;cursor:pointer}
 .filters button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .filters button:hover{border-color:var(--ink)}
-.works{columns:4 200px;column-gap:28px}
-.work{display:block;width:100%;break-inside:avoid;margin:0 0 36px;cursor:pointer;background:none;border:0;padding:0;text-align:left;color:inherit;font:inherit}
-.scroll{background:var(--paper-2);padding:10px;border-radius:2px;position:relative;
-  box-shadow:0 1px 0 var(--line),0 14px 24px -18px rgba(0,0,0,.35);transition:transform .3s ease}
-.work:hover .scroll{transform:translateY(-4px)}
-.scroll img{display:block;width:100%;height:auto;background:var(--mount)}
-.work figcaption{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-top:14px}
-.work .t{font-family:var(--font-brush);font-size:19px}
-.work .m{font-size:13px;color:var(--ink-soft);font-variant-numeric:tabular-nums;white-space:nowrap}
+.works{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:48px 32px}
+.work{display:block;width:100%;min-width:0;cursor:pointer;background:none;border:0;padding:0;text-align:center;color:inherit;font:inherit}
+.scroll{background:var(--paper-2);aspect-ratio:2/3;border-radius:2px;position:relative;overflow:hidden;
+  transition:background .3s ease}
+.work:hover .scroll{background:color-mix(in srgb,var(--paper-2) 80%,var(--line))}
+.scroll img{position:absolute;inset:8%;width:84%;height:84%;object-fit:contain;
+  filter:drop-shadow(0 10px 10px rgba(0,0,0,.22));transition:transform .35s ease}
+.work:hover .scroll img{transform:translateY(-3px)}
+.work figcaption{display:block;margin-top:16px}
+.work .t{display:block;font-family:var(--font-brush);font-size:18px;line-height:1.5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.work .m{display:block;margin-top:2px;font-size:13px;letter-spacing:.08em;color:var(--ink-soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.filters button .n{font-size:12px;margin-left:6px;opacity:.6;font-family:var(--font-serif)}
 .work[hidden]{display:none}
-.works-note{margin-top:30px;font-size:14px;color:var(--ink-soft)}
+.works-note{margin-top:48px;font-size:14px;color:var(--ink-soft)}
 
 /* 經歷 */
 .career{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:56px}
 .bio p{margin:0 0 16px;max-width:32em}
 .bio .quote{font-family:var(--font-brush);font-size:24px;line-height:1.6;border-left:2px solid var(--seal);padding-left:18px;margin:28px 0}
+.lineage{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.lineage li{display:grid;grid-template-columns:7em 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
+.lineage .k{font-family:var(--font-brush);font-size:19px}
+.lineage .v2{color:var(--ink-soft);font-size:15px}
+.lineage button{all:unset;cursor:pointer;color:var(--ink);border-bottom:1px solid var(--line)}
+.lineage button:hover{color:var(--seal);border-color:var(--seal)}
 .timeline{list-style:none;margin:0;padding:0;border-left:1px solid var(--line)}
 .timeline li{display:grid;grid-template-columns:72px 1fr;gap:14px;padding:0 0 26px 20px;position:relative}
 .timeline li::before{content:"";position:absolute;left:-4px;top:12px;width:7px;height:7px;background:var(--ink);border-radius:50%}
@@ -112,8 +122,7 @@ section{padding-block:80px}
 .legend i.a{background:var(--seal);border-radius:1px;transform:rotate(45deg)}
 
 /* 農耕日常 */
-.farm{background:var(--paper-2);margin-left:calc(-1 * max(16px,env(safe-area-inset-left,0px)));margin-right:calc(-1 * max(16px,env(safe-area-inset-right,0px)));
-  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.farm{background:var(--paper-2);box-shadow:0 0 0 100vmax var(--paper-2);clip-path:inset(0 -100vmax)}
 .farm .sec-head h2{color:var(--field)}
 .journal{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:36px 28px}
 .entry{margin:0;min-width:0}
@@ -132,6 +141,12 @@ section{padding-block:80px}
 .colophon .v{writing-mode:vertical-rl;font-family:var(--font-brush);font-size:22px;letter-spacing:.3em;color:var(--ink-soft)}
 footer{font-size:13px;color:var(--ink-soft);padding-block:0 32px}
 
+/* 留言板 */
+.guest{border-top:1px solid var(--line)}
+.guest-box{max-width:720px}
+#cusdis_thread iframe{width:100%;border:0;min-height:320px}
+.guest-wait{background:var(--paper-2);padding:28px;border-radius:2px;color:var(--ink-soft)}
+
 /* 放大檢視 */
 .viewer{position:fixed;inset:0;background:color-mix(in srgb,var(--paper) 94%,transparent);display:grid;place-items:center;z-index:20;
   padding:calc(24px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) calc(24px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
@@ -147,6 +162,7 @@ footer{font-size:13px;color:var(--ink-soft);padding-block:0 32px}
 .viewer .close{position:absolute;top:calc(16px + env(safe-area-inset-top,0px));right:max(16px,env(safe-area-inset-right,0px));
   background:var(--paper);border:1px solid var(--line);color:var(--ink);font-family:var(--font-brush);font-size:16px;padding:4px 14px;cursor:pointer;border-radius:2px;z-index:1}
 
+@media (max-width:960px){.works{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:820px){
   .career{grid-template-columns:1fr}
   .journal{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -157,8 +173,16 @@ footer{font-size:13px;color:var(--ink-soft);padding-block:0 32px}
   .hero-name{writing-mode:horizontal-tb;font-size:68px}
   .hero-name .seal{position:static;margin-left:14px;vertical-align:middle}
   .journal{grid-template-columns:1fr}
-  .works{columns:2;column-gap:16px}
-  .work{margin-bottom:24px}
+  .works{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 14px}
+  .scroll img{inset:6%;width:88%;height:88%}
+  .nav{font-size:15px;padding-block:16px}
+  .nav ul{gap:14px}
+  .eyebrow{letter-spacing:.12em;font-size:13px}
+  .facts{gap:10px 22px}
+  .facts b{font-size:26px}
+  .work .t{font-size:16px}
+  .work .m{font-size:12px;letter-spacing:0}
+  .lineage li{grid-template-columns:1fr;gap:2px}
   .colophon{grid-template-columns:1fr}
   .colophon .v{display:none}
   section{padding-block:56px}
@@ -170,32 +194,28 @@ footer{font-size:13px;color:var(--ink-soft);padding-block:0 32px}
   <nav class="nav" aria-label="主選單">
     <a class="brand" href="#top"><span class="seal sm" aria-hidden="true">呂</span>呂光浯書法</a>
     <ul>
-      <li><a href="#works">作品集</a></li>
-      <li><a href="#career">成就經歷</a></li>
-      <li><a href="#farm">農耕日常</a></li>
+      <li><a href="#works">展出作品</a></li>
+      <li><a href="#career">關於藝術家</a></li>
+      <li><a href="#farm">田園札記</a></li>
+      <li><a href="#guest">觀展留言</a></li>
     </ul>
   </nav>
 
   <header class="hero" id="top">
     <h1 class="hero-name">呂光浯<span class="seal lg" aria-hidden="true">光浯</span></h1>
     <div class="hero-body">
-      <p class="eyebrow">金　門　·　書　法　·　農　耕</p>
-      <h2>白天下田，夜裡研墨。<br>幾十年，一筆一畫。</h2>
-      <p>呂光浯，金門人。這裡收著他多年來的書法作品、展覽與獲獎紀錄，也記下他在田裡的日子。字與土地，都是慢慢養出來的。</p>
-      <p><span class="todo">簡介待補</span>　這段文字之後會換成老爸自己的話，或家人為他寫的介紹。</p>
-      <ul class="facts">
-        <li><b>〇〇</b><span>年 習字</span></li>
-        <li><b>39</b><span>件 作品收錄</span></li>
-        <li><b>〇〇</b><span>次 展覽</span></li>
-        <li><b>〇〇</b><span>分地</span></li>
-      </ul>
+      <p class="eyebrow">線上個展　·　ONLINE EXHIBITION</p>
+      <h2>筆耕・田耕</h2>
+      <p class="sub">呂光浯書法展　2025 – 2026</p>
+      <p>呂光浯先生，金門人。本展精選其近年楷書、行草、隸書與對聯作品三十九件，並收錄藝術家於金門田間的日常。字與土地，皆是長年養成。</p>
+      <ul class="facts" id="facts"></ul>
     </div>
   </header>
 
   <section id="works" aria-labelledby="works-h">
     <div class="sec-head">
-      <h2 id="works-h">作品集</h2><span class="en">WORKS</span>
-      <p>多為乙巳（2025）、丙午（2026）年間新作。依書體瀏覽，點一下作品可放大細看。</p>
+      <h2 id="works-h">展出作品</h2><span class="en">WORKS</span>
+      <p>展出作品多為乙巳（2025）、丙午（2026）年間新作。可依書體瀏覽，點選作品檢視細節。</p>
     </div>
     <div class="filters" role="group" aria-label="依書體篩選">
       <button type="button" id="f-all" data-f="all" aria-pressed="true">全部</button>
@@ -205,31 +225,27 @@ footer{font-size:13px;color:var(--ink-soft);padding-block:0 32px}
       <button type="button" id="f-dui" data-f="對聯" aria-pressed="false">對聯</button>
     </div>
     <div class="works" id="works-grid"></div>
-    <p class="works-note">題名與年份依落款辨識。<span class="todo">尺寸待補</span>　若有尺寸或創作心得，可以再補上。</p>
+    <p class="works-note">題名與年份依落款辨識。</p>
   </section>
 
   <section id="career" aria-labelledby="career-h" style="border-top:1px solid var(--line)">
     <div class="sec-head">
-      <h2 id="career-h">成就與經歷</h2><span class="en">CAREER</span>
+      <h2 id="career-h">關於藝術家</h2><span class="en">THE ARTIST</span>
     </div>
     <div class="career">
       <div class="bio">
-        <p>呂光浯是金門人。家鄉的文脈也留在他的字裡：他錄過明代金門鄉賢許獬「取天下第一等名位，不若辭之」的名句，臨過清代金門書家呂世宜的隸書，也以「學生光浯」的落款，寫下簡文龍老師的〈金中懷舊〉詩。</p>
-        <p>他楷、行草、隸書都寫，臨過漢隸與〈史晨後碑〉，也仿過文徵明的行書。</p>
-        <p><span class="todo">待補</span>　幾歲開始寫字、跟過哪位老師、什麼時候開始參展。</p>
-        <p class="quote">「寫字跟種田一樣，急不來。」</p>
-        <p><span class="todo">待補</span>　上面這句是示意，可以換成老爸常掛在嘴邊的一句話。也可以放他對書法的看法，或想留給晚輩的話。</p>
+        <p>呂光浯先生，金門人。家鄉的文脈貫穿其筆下：曾錄明代金門鄉賢許獬「取天下第一等名位，不若辭之」的名句，臨清代金門書家呂世宜的隸書，並以「學生光浯」落款，書簡文龍老師〈金中懷舊〉詩。</p>
+        <p>其創作兼擅楷書、行草與隸書，取法漢隸與〈史晨後碑〉，行書則上溯文徵明。</p>
       </div>
       <div>
-        <p class="legend"><span><i></i>經歷・展覽</span><span><i class="a"></i>獲獎</span></p>
-        <ol class="timeline">
-          <li><span class="y">19〇〇</span><span class="e"><b>開始習字</b><span>啟蒙老師、最早臨的字帖 <span class="todo">待補</span></span></span></li>
-          <li><span class="y">19〇〇</span><span class="e"><b>拜師學藝</b><span>師承與學習經過 <span class="todo">待補</span></span></span></li>
-          <li class="award"><span class="y">19〇〇</span><span class="e"><b>第一次得獎</b><span>比賽名稱與名次 <span class="todo">待補</span></span></span></li>
-          <li><span class="y">20〇〇</span><span class="e"><b>首次個展</b><span>展覽名稱、地點 <span class="todo">待補</span></span></span></li>
-          <li class="award"><span class="y">20〇〇</span><span class="e"><b>重要獎項</b><span>獎項名稱 <span class="todo">待補</span></span></span></li>
-          <li><span class="y">20〇〇</span><span class="e"><b>聯展、書會、教學</b><span>參與的書會或開班授課 <span class="todo">待補</span></span></span></li>
-        </ol>
+        <p class="legend" style="margin-bottom:14px">筆下的源流</p>
+        <ul class="lineage">
+          <li><span class="k">金門鄉賢</span><span class="v2">錄許獬名句〈<button type="button" data-w="w337">第一等人品</button>〉</span></li>
+          <li><span class="k">清代書家</span><span class="v2">臨呂世宜隸書〈<button type="button" data-w="w339">王孫季子</button>〉</span></li>
+          <li><span class="k">漢碑</span><span class="v2">臨〈史晨後碑〉〈<button type="button" data-w="w359">雅歌吹笙</button>〉</span></li>
+          <li><span class="k">明代行書</span><span class="v2">仿文徵明〈<button type="button" data-w="w348">滕王閣序</button>〉</span></li>
+          <li><span class="k">師長</span><span class="v2">為簡文龍老師書〈<button type="button" data-w="w332">金中懷舊詩</button>〉</span></li>
+        </ul>
       </div>
     </div>
   </section>
@@ -237,22 +253,33 @@ footer{font-size:13px;color:var(--ink-soft);padding-block:0 32px}
   <section id="farm" class="farm" aria-labelledby="farm-h">
     <div class="wrap">
       <div class="sec-head">
-        <h2 id="farm-h">農耕日常</h2><span class="en">FIELD NOTES</span>
-        <p>寫字之外，老爸在金門的紅土上種菜。蔥、高麗菜、地瓜葉、木瓜，一畦一畦都是自己整的。</p>
+        <h2 id="farm-h">田園札記</h2><span class="en">FIELD NOTES</span>
+        <p>書寫之外，呂光浯先生在金門的紅土上耕作。蔥、高麗菜、地瓜葉、木瓜，田畦皆親手整理。</p>
       </div>
       <div class="journal" id="journal"></div>
-      <p class="works-note">以上攝於 2026 年 11 月 5 日，霜降過後、立冬前兩天。</p>
+      <p class="works-note">攝於 2026 年 11 月 5 日，霜降之後、立冬之前。</p>
+    </div>
+  </section>
+
+  <section id="guest" class="guest" aria-labelledby="guest-h">
+    <div class="sec-head">
+      <h2 id="guest-h">觀展留言</h2><span class="en">GUESTBOOK</span>
+      <p>歡迎留下觀展心得。如欲欣賞原作、洽詢收藏或展覽合作，亦可於此留言並附上聯絡方式。無需註冊，留言經審核後刊出。</p>
+    </div>
+    <div class="guest-box">
+      <div id="cusdis_thread"></div>
+      <p class="guest-wait" id="guest-wait">留言功能即將開放，敬請期待。</p>
     </div>
   </section>
 
   <div class="colophon">
     <div>
-      <h2>聯絡與收藏</h2>
-      <p>想欣賞原作、邀請展覽或洽詢墨寶，可以透過家人聯繫。<span class="todo">聯絡方式待補</span></p>
+      <h2>呂光浯書法展</h2>
+      <p>線上個展　2025 – 2026</p>
     </div>
     <div class="v" aria-hidden="true">筆耕　田耕</div>
   </div>
-  <footer>© 呂光浯　·　網站由家人整理</footer>
+  <footer>© 呂光浯　·　作品圖像版權所有，請勿轉載</footer>
 </div>
 
 <div class="viewer" id="viewer" hidden role="dialog" aria-modal="true" aria-labelledby="v-title">
@@ -265,7 +292,6 @@ footer{font-size:13px;color:var(--ink-soft);padding-block:0 32px}
         <dt>原作</dt><dd id="v-src"></dd>
         <dt>書體</dt><dd id="v-style"></dd>
         <dt>落款</dt><dd id="v-year"></dd>
-        <dt>尺寸</dt><dd>待補</dd>
       </dl>
       <p style="color:var(--ink-soft);font-size:15px;margin:0">書者　呂光浯</p>
     </div>
@@ -329,15 +355,22 @@ document.querySelectorAll('.filters button').forEach(btn=>btn.addEventListener('
   grid.querySelectorAll('.work').forEach(w=>{w.hidden=!(f==='all'||w.dataset.s===f)});
 }));
 const V=document.getElementById('viewer');let lastFocus=null;
+const CNT={};WORKS.forEach(w=>CNT[w.s]=(CNT[w.s]||0)+1);
+document.querySelectorAll('.filters button').forEach(btn=>{const n=btn.dataset.f==='all'?WORKS.length:CNT[btn.dataset.f];
+  btn.insertAdjacentHTML('beforeend',`<span class="n">${n}</span>`)});
+document.getElementById('facts').innerHTML=`<li><b>${WORKS.length}</b><span>件 作品收錄</span></li>`+
+  ['楷書','行草','隸書','對聯'].map(k=>`<li><b>${CNT[k]}</b><span>${k}</span></li>`).join('');
+document.querySelectorAll('.lineage button').forEach(b=>b.addEventListener('click',()=>openW(WORKS.findIndex(w=>w.f===b.dataset.w),b)));
 grid.addEventListener('click',e=>{
-  const b=e.target.closest('.work');if(!b)return;const w=WORKS[b.dataset.i];lastFocus=b;
+  const b=e.target.closest('.work');if(!b)return;openW(+b.dataset.i,b)});
+function openW(i,from){const w=WORKS[i];lastFocus=from;
   const im=document.getElementById('v-big');im.src='works/'+w.f+'.jpg';im.alt='呂光浯'+w.s+'〈'+w.t+'〉';
   document.getElementById('v-title').textContent=w.t;
   document.getElementById('v-style').textContent=w.s;
     document.getElementById('v-year').textContent=w.y;
   document.getElementById('v-src').textContent=w.a;
   V.hidden=false;document.getElementById('v-close').focus();
-});
+}
 function closeV(){V.hidden=true;lastFocus&&lastFocus.focus()}
 document.getElementById('v-close').addEventListener('click',closeV);
 V.addEventListener('click',e=>{if(e.target===V)closeV()});
@@ -358,4 +391,16 @@ ENTRIES.forEach(en=>{
   <figcaption><div class="term"><b>${en.h}</b><span>2026.11.5</span></div><p>${en.txt}</p></figcaption>`;
   J.appendChild(f);
 });
+
+/* 留言板：Cusdis（親友免註冊）。填入 App ID 即開放。 */
+const CUSDIS_APP_ID="";
+if(CUSDIS_APP_ID){
+  const t=document.getElementById('cusdis_thread');
+  Object.assign(t.dataset,{host:'https://cusdis.com',appId:CUSDIS_APP_ID,pageId:'guestbook',
+    pageUrl:'https://ludrawing-sketch.github.io/lu-calligraphy/',pageTitle:'呂光浯書法・留言板',theme:'auto'});
+  document.getElementById('guest-wait').hidden=true;
+  const l=document.createElement('script');l.src='https://cusdis.com/js/widget/lang/zh-tw.js';
+  l.onload=l.onerror=()=>{const s=document.createElement('script');s.src='https://cusdis.com/js/cusdis.es.js';s.async=true;document.body.appendChild(s)};
+  document.body.appendChild(l);
+}
 </script>
