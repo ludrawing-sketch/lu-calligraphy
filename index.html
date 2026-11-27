@@ -8,7 +8,7 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@300;400;700&family=Noto+Serif+TC:wght@400;600;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@300;400;700&family=Noto+Serif+TC:wght@400;600;900&family=Noto+Serif+JP:wght@400;600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap">
 <style>
 /* Layout: 一卷展開的手卷，直排標題貫穿，留白為主；作品如裱框立軸，農耕以節氣為序 */
 :root{
@@ -59,7 +59,7 @@ h1,h2,h3{font-weight:600;text-wrap:balance;margin:0}
 /* 開卷 */
 .hero{display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,6vw,80px);align-items:start;padding-block:40px 40px}
 .facade{margin:0;padding-top:12px;background:linear-gradient(transparent 60%,color-mix(in srgb,var(--tile) 10%,transparent));box-shadow:0 0 0 100vmax color-mix(in srgb,var(--tile) 0%,transparent);border-bottom:6px solid var(--brick)}
-.facade{position:relative}.facade img{display:block;width:100%;height:clamp(180px,26vw,340px);object-fit:cover;object-position:50% 40%}
+.facade{position:relative}.facade img{display:block;width:100%;height:clamp(210px,40vw,500px);object-fit:cover;object-position:50% 60%}
 .facade figcaption{position:absolute;right:16px;bottom:12px;padding:4px 12px;background:rgba(40,20,12,.62);color:#f6ead6;font-size:13px;letter-spacing:.2em}
 .hero-name{writing-mode:vertical-rl;font-family:var(--font-brush);font-weight:700;font-size:clamp(72px,13vw,156px);
   line-height:1.05;letter-spacing:.08em;margin:0;position:relative}
@@ -242,7 +242,7 @@ footer{font-size:13px;color:var(--ink-soft);padding-block:0 32px}
 .viewer[hidden]{display:none}
 .viewer .box{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:56px;max-width:1120px;margin:0 auto;align-items:start}
 .viewer .pic{position:sticky;top:0;display:grid;place-items:center;background:var(--paper-2);padding:24px;min-height:min(78vh,760px)}
-.viewer .big{display:block;max-height:74vh;max-width:100%;width:auto;height:auto;box-shadow:0 20px 40px -24px rgba(0,0,0,.5)}
+.viewer img.big{display:block;max-height:74vh;max-width:100%;width:auto;height:auto;box-shadow:0 20px 40px -24px rgba(0,0,0,.5)}
 .viewer .info{min-width:0}
 .viewer .info h3{font-family:var(--font-brush);font-size:clamp(26px,3vw,34px);line-height:1.35;margin-bottom:6px}
 .viewer dl{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;margin:16px 0 0;font-size:15px}
@@ -259,10 +259,16 @@ footer{font-size:13px;color:var(--ink-soft);padding-block:0 32px}
 @media (max-width:820px){
   .viewer .box{grid-template-columns:1fr;gap:28px}
   .viewer .pic{position:static;min-height:0;padding:14px}
-  .viewer .big{max-height:62vh}
+  .viewer img.big{max-height:62vh}
   .viewer .tx{font-size:18px}
 }
-.lang{background:none;border:1px solid var(--line);color:var(--ink-soft);font-family:var(--font-brush);font-size:15px;padding:0 10px;border-radius:2px;cursor:pointer;line-height:1.8}
+html:lang(ja){--font-serif:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif}
+html:is(:lang(en),:lang(es),:lang(fr)){--font-brush:"Cormorant Garamond","LXGW WenKai TC",serif;--font-serif:"Cormorant Garamond","Noto Serif TC",serif}
+html:is(:lang(en),:lang(es),:lang(fr)) body{font-size:19px;font-variant-numeric:lining-nums}
+html:is(:lang(en),:lang(es),:lang(fr),:lang(ja)) .eyebrow,html:is(:lang(en),:lang(es),:lang(fr),:lang(ja)) .hero-body .sub{letter-spacing:.12em}
+html:is(:lang(en),:lang(es),:lang(fr)) .work .t{white-space:normal;font-size:19px;line-height:1.3}
+.v-zh{display:block;font-size:.62em;color:var(--ink-soft);margin-top:4px;font-family:"LXGW WenKai TC",serif}
+.lang{appearance:none;-webkit-appearance:none;background:none;border:1px solid var(--line);color:var(--ink-soft);font-family:var(--font-brush);font-size:15px;padding:0 10px;border-radius:2px;cursor:pointer;line-height:1.8}
 .lang:hover{border-color:var(--ink);color:var(--ink)}
 .viewer .close{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));right:max(16px,env(safe-area-inset-right,0px));
   background:var(--paper);border:1px solid var(--line);color:var(--ink);font-family:var(--font-brush);font-size:16px;padding:4px 14px;cursor:pointer;border-radius:2px;z-index:1}
@@ -299,12 +305,12 @@ footer{font-size:13px;color:var(--ink-soft);padding-block:0 32px}
   <nav class="nav" aria-label="主選單">
     <a class="brand" href="#top"><span class="seal sm" aria-hidden="true">呂</span>呂光浯書法</a>
     <ul>
-      <li><a href="#works">展出作品</a></li>
-      <li><a href="#career">關於藝術家</a></li>
-      <li><a href="#home">故鄉</a></li>
-      <li><a href="#farm">田園札記</a></li>
-      <li><a href="#guest">觀展留言</a></li>
-      <li><button type="button" class="lang" id="lang" aria-label="切換繁體／簡體中文">简体</button></li>
+      <li><a href="#works" data-i="nav1">展出作品</a></li>
+      <li><a href="#career" data-i="nav2">關於藝術家</a></li>
+      <li><a href="#home" data-i="nav3">故鄉</a></li>
+      <li><a href="#farm" data-i="nav4">田園札記</a></li>
+      <li><a href="#guest" data-i="nav5">觀展留言</a></li>
+      <li><select class="lang" id="lang" aria-label="語言 Language"><option value="t">繁體中文</option><option value="s">简体中文</option><option value="ja">日本語</option><option value="en">English</option></select></li>
     </ul>
   </nav>
   <svg class="ridge" viewBox="0 0 1000 60" preserveAspectRatio="none" aria-hidden="true">
@@ -317,22 +323,22 @@ footer{font-size:13px;color:var(--ink-soft);padding-block:0 32px}
   <header class="hero" id="top">
     <h1 class="hero-name">呂光浯<span class="seal lg" aria-hidden="true">光浯</span></h1>
     <div class="hero-body">
-      <p class="eyebrow">線上個展　·　筆墨傳家</p>
-      <h2>筆耕・田耕</h2>
-      <p class="sub">呂光浯書法展　2025 – 2026</p>
-      <p>呂光浯先生，金門人。本展精選其近年楷書、行草、隸書與對聯作品三十九件，並收錄藝術家於金門田間的日常。字與土地，皆是長年養成。</p>
+      <p class="eyebrow" data-i="eyebrow">線上個展　·　筆墨傳家</p>
+      <h2 data-i="motto">筆耕・田耕</h2>
+      <p class="sub" data-i="sub">呂光浯書法展　2025 – 2026</p>
+      <p data-i="intro">呂光浯先生，金門人。本展精選其近年楷書、行草、隸書與對聯作品三十九件，並收錄藝術家於金門田間的日常。字與土地，皆是長年養成。</p>
       <ul class="facts" id="facts"></ul>
     </div>
   </header>
   <figure class="facade">
-    <img src="home/banner.jpg" alt="下湖呂氏家廟正面，匾額「呂氏家廟」，民國一一二年重新奠安" width="1477" height="382">
-    <figcaption>金門下湖　呂氏家廟</figcaption>
+    <img src="home/temple.jpg" alt="金門下湖呂氏家廟正面全景：燕尾脊、紅瓦，匾額「呂氏家廟」" width="1706" height="880">
+    <figcaption data-i="facade">金門下湖　呂氏家廟</figcaption>
   </figure>
 
   <section id="works" aria-labelledby="works-h">
     <div class="sec-head">
-      <h2 id="works-h">展出作品</h2><span class="en">翰墨展廳</span>
-      <p>乙巳（2025）、丙午（2026）年間新作。點選作品，可閱讀釋文與作品故事。</p>
+      <h2 id="works-h" data-i="worksH">展出作品</h2><span class="en">翰墨展廳</span>
+      <p data-i="worksP">乙巳（2025）、丙午（2026）年間新作。點選作品，可閱讀釋文與作品故事。</p>
     </div>
     <div class="filters" role="group" aria-label="依書體篩選">
       <button type="button" id="f-all" data-f="all" aria-pressed="true">全部</button>
@@ -342,26 +348,26 @@ footer{font-size:13px;color:var(--ink-soft);padding-block:0 32px}
       <button type="button" id="f-dui" data-f="對聯" aria-pressed="false">對聯</button>
     </div>
     <div class="works" id="works-grid"></div>
-    <p class="works-note">題名與年份依落款辨識。</p>
+    <p class="works-note" data-i="worksNote">題名與年份依落款辨識。</p>
   </section>
 
   <section id="career" aria-labelledby="career-h" style="border-top:1px solid var(--line)">
     <div class="sec-head">
-      <h2 id="career-h">關於藝術家</h2><span class="en">書者其人</span>
+      <h2 id="career-h" data-i="careerH">關於藝術家</h2><span class="en">書者其人</span>
     </div>
     <div class="career">
       <div class="bio">
-        <p>呂光浯先生，金門人。家鄉的文脈貫穿其筆下：曾錄明代金門鄉賢許獬「取天下第一等名位，不若辭之」的名句，臨清代金門書家呂世宜的隸書，並以「學生光浯」落款，書簡文龍老師〈金中懷舊〉詩。</p>
-        <p>其創作兼擅楷書、行草與隸書，取法漢隸與〈史晨後碑〉，行書則上溯文徵明。</p>
+        <p data-i="bio1">呂光浯先生，金門人。家鄉的文脈貫穿其筆下：曾錄明代金門鄉賢許獬「取天下第一等名位，不若辭之」的名句，臨清代金門書家呂世宜的隸書，並以「學生光浯」落款，書簡文龍老師〈金中懷舊〉詩。</p>
+        <p data-i="bio2">其創作兼擅楷書、行草與隸書，取法漢隸與〈史晨後碑〉，行書則上溯文徵明。</p>
       </div>
       <div>
-        <p class="legend" style="margin-bottom:14px">筆下的源流</p>
+        <p class="legend" style="margin-bottom:14px" data-i="lineH">筆下的源流</p>
         <ul class="lineage">
-          <li><span class="k">金門鄉賢</span><span class="v2">錄許獬名句〈<button type="button" data-w="w337">第一等人品</button>〉</span></li>
-          <li><span class="k">清代書家</span><span class="v2">臨呂世宜隸書〈<button type="button" data-w="w339">王孫季子</button>〉</span></li>
-          <li><span class="k">漢碑</span><span class="v2">臨〈史晨後碑〉〈<button type="button" data-w="w359">雅歌吹笙</button>〉</span></li>
-          <li><span class="k">明代行書</span><span class="v2">仿文徵明〈<button type="button" data-w="w348">滕王閣序</button>〉</span></li>
-          <li><span class="k">師長</span><span class="v2">為簡文龍老師書〈<button type="button" data-w="w332">金中懷舊詩</button>〉</span></li>
+          <li data-i="line1"><span class="k">金門鄉賢</span><span class="v2">錄許獬名句〈<button type="button" data-w="w337">第一等人品</button>〉</span></li>
+          <li data-i="line2"><span class="k">清代書家</span><span class="v2">臨呂世宜隸書〈<button type="button" data-w="w339">王孫季子</button>〉</span></li>
+          <li data-i="line3"><span class="k">漢碑</span><span class="v2">臨〈史晨後碑〉〈<button type="button" data-w="w359">雅歌吹笙</button>〉</span></li>
+          <li data-i="line4"><span class="k">明代行書</span><span class="v2">仿文徵明〈<button type="button" data-w="w348">滕王閣序</button>〉</span></li>
+          <li data-i="line5"><span class="k">師長</span><span class="v2">為簡文龍老師書〈<button type="button" data-w="w332">金中懷舊詩</button>〉</span></li>
         </ul>
       </div>
     </div>
@@ -369,70 +375,70 @@ footer{font-size:13px;color:var(--ink-soft);padding-block:0 32px}
 
   <section id="home" class="home" aria-labelledby="home-h">
     <div class="sec-head">
-      <h2 id="home-h">故鄉　下湖</h2><span class="en">桑梓根源</span>
-      <p>金門縣金湖鎮溪湖里・下湖（舊名霞湖）</p>
+      <h2 id="home-h" data-i="homeH">故鄉　下湖</h2><span class="en">桑梓根源</span>
+      <p data-i="homeP">金門縣金湖鎮溪湖里・下湖（舊名霞湖）</p>
     </div>
     <div class="home-grid">
       <div class="home-text">
-        <p>呂光浯先生出身金門下湖。下湖舊名「霞湖」，位於金湖鎮溪湖里，與溪邊、復國墩、下新厝、后壟同屬一里。村落地名可溯至明朝嘉靖年間，至今已四百多年。</p>
-        <p>依〈下湖呂氏家廟修繕誌〉所記，呂氏先祖自河南固始幾經輾轉遷徙，至宋朝由福建南安樸兜鄉遷來金門西村。西村呂氏原有四房，其中長房、二房移居下湖，其餘散居各地。呂光浯先生即屬下湖呂氏次房。西村族譜亦載，開基祖為宋代的呂之才（號法溪，別號舜臣），今為金門呂氏大宗。</p>
-        <p>下湖呂氏家廟背山面海，民國七十四年（1985）落成奠安，春秋二祭。歲月推移，樑柱蟲蛀、屋簷漏雨，經宗親代表決議修繕，於民國一〇八年（2019）初動工，以石材雕塑樑柱牆堵、印度紅石更新大門對聯，壁堵浮雕由惠安師傅細心雕成，民國一一二年（2023）重新奠安。每年農曆二月十六日與八月十六日，家廟依例舉辦「祭祖吃頭」，宗親齊聚，延續香火與情誼。</p>
+        <p data-i="home1">呂光浯先生出身金門下湖。下湖舊名「霞湖」，位於金湖鎮溪湖里，與溪邊、復國墩、下新厝、后壟同屬一里。村落地名可溯至明朝嘉靖年間，至今已四百多年。</p>
+        <p data-i="home2">依〈下湖呂氏家廟修繕誌〉所記，呂氏先祖自河南固始幾經輾轉遷徙，至宋朝由福建南安樸兜鄉遷來金門西村。西村呂氏原有四房，其中長房、二房移居下湖，其餘散居各地。呂光浯先生即屬下湖呂氏次房。西村族譜亦載，開基祖為宋代的呂之才（號法溪，別號舜臣），今為金門呂氏大宗。</p>
+        <p data-i="home3">下湖呂氏家廟背山面海，民國七十四年（1985）落成奠安，春秋二祭。歲月推移，樑柱蟲蛀、屋簷漏雨，經宗親代表決議修繕，於民國一〇八年（2019）初動工，以石材雕塑樑柱牆堵、印度紅石更新大門對聯，壁堵浮雕由惠安師傅細心雕成，民國一一二年（2023）重新奠安。每年農曆二月十六日與八月十六日，家廟依例舉辦「祭祖吃頭」，宗親齊聚，延續香火與情誼。</p>
         <ul class="roots">
-          <li><span class="k">遠祖</span><span class="v2">河南固始，輾轉南遷</span></li>
-          <li><span class="k">祖籍</span><span class="v2">福建泉州南安樸兜鄉</span></li>
-          <li><span class="k">開基</span><span class="v2">宋代，呂之才（法溪公）遷居浯洲西倉（今金門西村）</span></li>
-          <li><span class="k">分衍</span><span class="v2">西村原有四房，長房、二房移居下湖</span></li>
-          <li><span class="k">家廟</span><span class="v2">下湖呂氏家廟，1985 年奠安，2019 年動工修繕，2023 年重新奠安</span></li>
-          <li><span class="k">祭祖</span><span class="v2">每年農曆二月十六、八月十六「祭祖吃頭」</span></li>
-          <li><span class="k">燈號</span><span class="v2">「中原文獻」，金門呂氏世代相傳</span></li>
-          <li><span class="k">鄉賢書家</span><span class="v2">清代隸書名家呂世宜生於西村，呂光浯先生曾臨其隸書〈<button type="button" class="hlink" data-w="w339">王孫季子</button>〉</span></li>
+          <li data-i="root1"><span class="k">遠祖</span><span class="v2">河南固始，輾轉南遷</span></li>
+          <li data-i="root2"><span class="k">祖籍</span><span class="v2">福建泉州南安樸兜鄉</span></li>
+          <li data-i="root3"><span class="k">開基</span><span class="v2">宋代，呂之才（法溪公）遷居浯洲西倉（今金門西村）</span></li>
+          <li data-i="root4"><span class="k">分衍</span><span class="v2">西村原有四房，長房、二房移居下湖</span></li>
+          <li data-i="root5"><span class="k">家廟</span><span class="v2">下湖呂氏家廟，1985 年奠安，2019 年動工修繕，2023 年重新奠安</span></li>
+          <li data-i="root6"><span class="k">祭祖</span><span class="v2">每年農曆二月十六、八月十六「祭祖吃頭」</span></li>
+          <li data-i="root7"><span class="k">燈號</span><span class="v2">「中原文獻」，金門呂氏世代相傳</span></li>
+          <li data-i="root8"><span class="k">鄉賢書家</span><span class="v2">清代隸書名家呂世宜生於西村，呂光浯先生曾臨其隸書〈<button type="button" class="hlink" data-w="w339">王孫季子</button>〉</span></li>
         </ul>
-        <p class="cite">資料來源：呂氏家廟重建委員會〈下湖呂氏家廟修繕誌〉，民國一一二年（2023）；金門縣金湖鎮公所〈<a href="https://kinhu.kinmen.gov.tw/cp.aspx?n=EC28BD4D5ED6A474" target="_blank" rel="noopener">溪湖里</a>〉；馬定〈<a href="https://www.kmdn.gov.tw/1117/1271/1274/36728" target="_blank" rel="noopener">金門西村呂氏淵源</a>〉，《金門日報》，2005；陳炳容〈<a href="https://www.kmdn.gov.tw/1117/1271/1274/37757" target="_blank" rel="noopener">金門族譜研究之一：移民與地名</a>〉，《金門日報》，2005。遷金年代各家記載略有出入。</p>
+        <p class="cite" data-i="cite">資料來源：呂氏家廟重建委員會〈下湖呂氏家廟修繕誌〉，民國一一二年（2023）；金門縣金湖鎮公所〈<a href="https://kinhu.kinmen.gov.tw/cp.aspx?n=EC28BD4D5ED6A474" target="_blank" rel="noopener">溪湖里</a>〉；馬定〈<a href="https://www.kmdn.gov.tw/1117/1271/1274/36728" target="_blank" rel="noopener">金門西村呂氏淵源</a>〉，《金門日報》，2005；陳炳容〈<a href="https://www.kmdn.gov.tw/1117/1271/1274/37757" target="_blank" rel="noopener">金門族譜研究之一：移民與地名</a>〉，《金門日報》，2005。遷金年代各家記載略有出入。</p>
       </div>
       <figure class="lantern" aria-label="呂氏燈號「中原文獻」">
         <span class="cord"></span><span class="cap"></span>
         <span class="body"><span class="tag r">中原</span><span class="sur">呂</span><span class="tag l">文獻</span></span>
         <span class="cap"></span><span class="tassel"></span>
-        <figcaption>呂氏燈號　中原文獻</figcaption>
+        <figcaption data-i="lantern">呂氏燈號　中原文獻</figcaption>
       </figure>
     </div>
     <div class="rites">
-      <h3>家廟奠安慶典</h3>
+      <h3 data-i="ritesH">家廟奠安慶典</h3>
       <div class="rites-grid">
-        <figure><img src="home/h390.jpg" alt="呂光浯先生身著禮服，立於「呂氏家廟」匾額下" loading="lazy"><figcaption>呂光浯先生於「呂氏家廟」匾額下</figcaption></figure>
-        <figure><img src="home/h388.jpg" alt="宗親身著紅衫藍袍、披掛綵帶，於呂氏家廟前合影" loading="lazy"><figcaption>宗親著禮服、披綵帶，於家廟前合影</figcaption></figure>
-        <figure><img src="home/h387.jpg" alt="宗親女眷於呂氏家廟前合影" loading="lazy"><figcaption>宗親女眷於家廟前合影</figcaption></figure>
-        <figure><img src="home/h389.jpg" alt="兩位披掛「長老」綵帶的宗親於家廟門前" loading="lazy"><figcaption>披掛「長老」綵帶的宗親</figcaption></figure>
+        <figure><img src="home/h390.jpg" alt="呂光浯先生身著禮服，立於「呂氏家廟」匾額下" loading="lazy"><figcaption data-i="rite1">呂光浯先生於「呂氏家廟」匾額下</figcaption></figure>
+        <figure><img src="home/h388.jpg" alt="宗親身著紅衫藍袍、披掛綵帶，於呂氏家廟前合影" loading="lazy"><figcaption data-i="rite2">宗親著禮服、披綵帶，於家廟前合影</figcaption></figure>
+        <figure><img src="home/h387.jpg" alt="宗親女眷於呂氏家廟前合影" loading="lazy"><figcaption data-i="rite3">宗親女眷於家廟前合影</figcaption></figure>
+        <figure><img src="home/h389.jpg" alt="兩位披掛「長老」綵帶的宗親於家廟門前" loading="lazy"><figcaption data-i="rite4">披掛「長老」綵帶的宗親</figcaption></figure>
       </div>
     </div>
     <figure class="film">
       <div class="film-frame"><iframe src="https://www.youtube-nocookie.com/embed/8tH5QpagMjA" title="112年下湖呂氏家廟奠安" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
-      <figcaption><b>影像紀錄｜112年下湖呂氏家廟奠安</b>民國一一二年（2023），下湖呂氏家廟修繕完成後重新奠安。影片來源：金門部落・<a href="https://www.youtube.com/watch?v=8tH5QpagMjA" target="_blank" rel="noopener">在 YouTube 觀看</a></figcaption>
+      <figcaption data-i="film"><b>影像紀錄｜112年下湖呂氏家廟奠安</b>民國一一二年（2023），下湖呂氏家廟修繕完成後重新奠安。影片來源：金門部落・<a href="https://www.youtube.com/watch?v=8tH5QpagMjA" target="_blank" rel="noopener">在 YouTube 觀看</a></figcaption>
     </figure>
   </section>
 
   <section id="farm" class="farm" aria-labelledby="farm-h">
     <div class="wrap">
       <div class="sec-head">
-        <h2 id="farm-h">田園札記</h2><span class="en">晴耕雨讀</span>
-        <p>書寫之外，呂光浯先生在金門的紅土上耕作。蔥、高麗菜、地瓜葉、木瓜，田畦皆親手整理。</p>
+        <h2 id="farm-h" data-i="farmH">田園札記</h2><span class="en">晴耕雨讀</span>
+        <p data-i="farmP">書寫之外，呂光浯先生在金門的紅土上耕作。蔥、高麗菜、地瓜葉、木瓜，田畦皆親手整理。</p>
       </div>
       <div class="journal" id="journal"></div>
-      <p class="works-note">標註日期者攝於 2026 年 11 月 5 日，霜降之後、立冬之前。</p>
+      <p class="works-note" data-i="farmNote">標註日期者攝於 2026 年 11 月 5 日，霜降之後、立冬之前。</p>
     </div>
   </section>
 
   <section id="guest" class="guest" aria-labelledby="guest-h">
     <div class="sec-head">
-      <h2 id="guest-h">觀展留言</h2><span class="en">留墨題記</span>
-      <p>歡迎留下觀展心得。如欲欣賞原作、洽詢收藏或展覽合作，亦可於此留言並留下聯絡方式（不會公開）。無需註冊，留言經審核後刊出。</p>
+      <h2 id="guest-h" data-i="guestH">觀展留言</h2><span class="en">留墨題記</span>
+      <p data-i="guestP">歡迎留下觀展心得。如欲欣賞原作、洽詢收藏或展覽合作，亦可於此留言並留下聯絡方式（不會公開）。無需註冊，留言經審核後刊出。</p>
     </div>
     <div class="guest-box">
       <form class="gform" id="gform" hidden>
-        <label>大名<input name="n" required maxlength="40" autocomplete="name"></label>
-        <label>留言<textarea name="m" required maxlength="1000"></textarea></label>
-        <label id="gc">聯絡方式（選填，不會公開）<input name="c" maxlength="100" autocomplete="email"></label>
-        <div class="row"><button type="submit">送出留言</button><span class="msg" id="gmsg" role="status"></span></div>
+        <label><span data-i="fName">大名</span><input name="n" required maxlength="40" autocomplete="name"></label>
+        <label><span data-i="fMsg">留言</span><textarea name="m" required maxlength="1000"></textarea></label>
+        <label id="gc"><span data-i="fContact">聯絡方式（選填，不會公開）</span><input name="c" maxlength="100" autocomplete="email"></label>
+        <div class="row"><button type="submit" data-i="fSend">送出留言</button><span class="msg" id="gmsg" role="status"></span></div>
       </form>
       <ul class="notes" id="notes"></ul>
       <p class="guest-wait" id="guest-wait">留言功能即將開放，敬請期待。</p>
@@ -441,8 +447,8 @@ footer{font-size:13px;color:var(--ink-soft);padding-block:0 32px}
 
   <div class="colophon">
     <div>
-      <h2>呂光浯書法展</h2>
-      <p>線上個展　2025 – 2026</p>
+      <h2 data-i="colH">呂光浯書法展</h2>
+      <p data-i="colP">線上個展　2025 – 2026</p>
     </div>
     <div class="v" aria-hidden="true">筆耕　田耕</div>
   </div>
@@ -450,27 +456,27 @@ footer{font-size:13px;color:var(--ink-soft);padding-block:0 32px}
     <path fill="currentColor" d="M0,2 C30,26 70,33 120,34 L880,34 C930,33 970,26 1000,2 L994,16 C968,36 932,42 880,42 L120,42 C68,42 32,36 6,16 Z"/>
     <rect class="tiles" x="120" y="42" width="760" height="16"/>
   </svg>
-  <footer>© 呂光浯　·　作品圖像版權所有，請勿轉載</footer>
+  <footer data-i="footer">© 呂光浯　·　作品圖像版權所有，請勿轉載</footer>
 </div>
 
 <div class="viewer" id="viewer" hidden role="dialog" aria-modal="true" aria-labelledby="v-title">
-  <button type="button" class="close" id="v-close">關閉</button>
+  <button type="button" class="close" id="v-close" data-i="vClose">關閉</button>
   <div class="box">
     <div class="pic"><img class="big" id="v-big" alt=""></div>
     <div class="info">
       <h3 id="v-title"></h3>
       <dl>
-        <dt>出處</dt><dd id="v-src"></dd>
-        <dt>書體</dt><dd id="v-style"></dd>
-        <dt>落款</dt><dd id="v-year"></dd>
+        <dt data-i="vSrc">出處</dt><dd id="v-src"></dd>
+        <dt data-i="vStyle">書體</dt><dd id="v-style"></dd>
+        <dt data-i="vYear">落款</dt><dd id="v-year"></dd>
       </dl>
-      <h4>釋文</h4>
+      <h4 data-i="vTx">釋文</h4>
       <p class="tx" id="v-tx"></p>
-      <h4>作品故事</h4>
+      <h4 data-i="vBg">作品故事</h4>
       <p class="bg" id="v-bg"></p>
-      <p class="by">書者　呂光浯</p>
-      <p style="margin:18px 0 0"><button type="button" class="like big" id="v-like" aria-pressed="false" hidden><span class="h">♡</span><span>喜歡這幅作品</span><span class="n">0</span></button></p>
-      <div class="nav2"><button type="button" id="v-prev">← 上一幅</button><button type="button" id="v-next">下一幅 →</button></div>
+      <p class="by" data-i="vBy">書者　呂光浯</p>
+      <p style="margin:18px 0 0"><button type="button" class="like big" id="v-like" aria-pressed="false" hidden><span class="h">♡</span><span data-i="vLike">喜歡這幅作品</span><span class="n">0</span></button></p>
+      <div class="nav2"><button type="button" id="v-prev" data-i="vPrev">← 上一幅</button><button type="button" id="v-next" data-i="vNext">下一幅 →</button></div>
     </div>
   </div>
 </div>
@@ -518,15 +524,25 @@ const WORKS=[
   {f:"w356",t:"世事每從寬處樂・人倫常在忍中全",a:"七言聯",s:"對聯",y:"丙午穀雨（2026）"},
   {f:"w353",t:"鳥隨鳳凰飛能遠・人伴賢良品自高",a:"錄《濟公全傳》",s:"對聯",y:"乙巳之冬（2025）"}
 ];
+/* 多語：I18N[lang] 由 i18n/<lang>.js 載入；中文（t/s）用頁面原文 */
+window.I18N=window.I18N||{};window.LANG='t';
+const D=()=>I18N[window.LANG]||null;
+const U=(k,zh)=>{const d=D();return d&&d.ui&&d.ui[k]!=null?d.ui[k]:zh};
+const ST=s=>{const d=D();return d&&d.ui&&d.ui.styles?d.ui.styles[s]:s};
+function WT(w){const d=D(),x=d&&d.W&&d.W[w.f];return x?Object.assign({},w,x,{zt:w.t}):w}
+function YR(y){const d=D();if(!d||!d.ui)return y;const u=d.ui;if(u.yx&&u.yx[y])return u.yx[y];
+  const m=y.match(/^(乙巳|丙午)?(.*?)（(\d{4})）$/);if(!m)return y;const t=m[2]?(u.terms[m[2]]||m[2]):'';return u.yfmt?u.yfmt(t,m[3]):(t?t+', ':'')+m[3]}
 const grid=document.getElementById('works-grid');
-WORKS.forEach((w,i)=>{
+function renderWorks(){const f=(document.querySelector('.filters button[aria-pressed="true"]')||{}).dataset;grid.textContent='';
+WORKS.forEach((w0,i)=>{const w=WT(w0),zs=ST(w0.s);
   const b=document.createElement('div');
-  b.className='work';b.dataset.s=w.s;b.dataset.i=i;
-  b.innerHTML=`<button type="button" class="open" aria-label="${w.t}，${w.s}，點擊閱讀釋文與作品故事"><div class="scroll"><img src="works/${w.f}.jpg" alt="呂光浯${w.s}〈${w.t}〉" loading="lazy"></div>
-  <figcaption><span class="t">${w.t}</span><span class="m">${w.a}・${w.s}</span></figcaption></button>
-  <button type="button" class="like" data-f="${w.f}" aria-pressed="false" hidden><span class="h">♡</span><span class="n">0</span></button>`;
+  b.className='work';b.dataset.s=w0.s;b.dataset.i=i;if(f&&f.f!=='all'&&f.f!==w0.s)b.hidden=true;
+  b.innerHTML=`<button type="button" class="open" aria-label="${w.t}，${zs}，${U('openAria','點擊閱讀釋文與作品故事')}"><div class="scroll"><img src="works/${w0.f}.jpg" alt="${U('altBy','呂光浯')}${zs}〈${w.t}〉" loading="lazy"></div>
+  <figcaption><span class="t">${w.t}</span><span class="m">${w.a}・${zs}</span></figcaption></button>
+  <button type="button" class="like" data-f="${w0.f}" aria-pressed="false" hidden><span class="h">♡</span><span class="n">0</span></button>`;
   grid.appendChild(b);
-});
+});}
+renderWorks();
 document.querySelectorAll('.filters button').forEach(btn=>btn.addEventListener('click',()=>{
   const f=btn.dataset.f;
   document.querySelectorAll('.filters button').forEach(x=>x.setAttribute('aria-pressed',x===btn));
@@ -534,23 +550,26 @@ document.querySelectorAll('.filters button').forEach(btn=>btn.addEventListener('
 }));
 const V=document.getElementById('viewer');let lastFocus=null;
 const CNT={};WORKS.forEach(w=>CNT[w.s]=(CNT[w.s]||0)+1);
-document.querySelectorAll('.filters button').forEach(btn=>{const n=btn.dataset.f==='all'?WORKS.length:CNT[btn.dataset.f];
-  btn.insertAdjacentHTML('beforeend',`<span class="n">${n}</span>`)});
-document.getElementById('facts').innerHTML=`<li><b>${WORKS.length}</b><span>件 作品收錄</span></li>`+
-  ['楷書','行草','隸書','對聯'].map(k=>`<li><b>${CNT[k]}</b><span>${k}</span></li>`).join('');
-document.querySelectorAll('.lineage button,.hlink').forEach(b=>b.addEventListener('click',()=>openW(WORKS.findIndex(w=>w.f===b.dataset.w),b)));
+function renderCounts(){
+document.querySelectorAll('.filters button').forEach(btn=>{const all=btn.dataset.f==='all',n=all?WORKS.length:CNT[btn.dataset.f];
+  btn.innerHTML=`${all?U('all','全部'):ST(btn.dataset.f)}<span class="n">${n}</span>`});
+document.getElementById('facts').innerHTML=`<li><b>${WORKS.length}</b><span>${U('factWorks','件 作品收錄')}</span></li>`+
+  ['楷書','行草','隸書','對聯'].map(k=>`<li><b>${CNT[k]}</b><span>${ST(k)}</span></li>`).join('');}
+renderCounts();
+document.addEventListener('click',e=>{const b=e.target.closest('.lineage button[data-w],.hlink[data-w]');if(b)openW(WORKS.findIndex(w=>w.f===b.dataset.w),b)});
 grid.addEventListener('click',e=>{
   const lk=e.target.closest('.like');if(lk){doLike(lk.dataset.f);return}
   const o=e.target.closest('.open');if(!o)return;openW(+o.parentNode.dataset.i,o)});
-function openW(i,from){const w=WORKS[i];lastFocus=from;
-  const im=document.getElementById('v-big');im.src='works/'+w.f+'.jpg';im.alt='呂光浯'+w.s+'〈'+w.t+'〉';
-  document.getElementById('v-title').textContent=w.t;
-  document.getElementById('v-style').textContent=w.s;
-    document.getElementById('v-year').textContent=w.y;
-  const st=STORY[w.f]||['','',''];
-  document.getElementById('v-src').textContent=st[1]||w.a;
-  document.getElementById('v-tx').textContent=st[0];
-  document.getElementById('v-bg').textContent=st[2];
+function openW(i,from){const w0=WORKS[i],w=WT(w0),zs=ST(w0.s);lastFocus=from;
+  const im=document.getElementById('v-big');im.src='works/'+w0.f+'.jpg';im.alt=U('altBy','呂光浯')+zs+'〈'+w.t+'〉';
+  const vt=document.getElementById('v-title');vt.textContent=w.t;
+  if(w.zt&&w.t!==w0.t){const z=document.createElement('span');z.className='v-zh';z.lang='zh-Hant';z.textContent=w0.t;vt.append(z)}
+  document.getElementById('v-style').textContent=zs;
+  document.getElementById('v-year').textContent=YR(w0.y);
+  const st=STORY[w0.f]||['','',''];
+  document.getElementById('v-src').textContent=w.src||st[1]||w.a;
+  const tx=document.getElementById('v-tx');tx.textContent=st[0];tx.lang='zh-Hant';
+  document.getElementById('v-bg').textContent=w.bg||st[2];
   cur=i;V.scrollTop=0;document.getElementById('v-like').dataset.f=w.f;paintLikes();
   if(V.hidden){V.hidden=false;document.body.style.overflow='hidden';document.getElementById('v-close').focus()}
   if(window.LANG==='s')conv(V,true);
@@ -590,12 +609,14 @@ const ENTRIES=[
   {f:"f369",h:"田邊小路",txt:"田邊的石板小路，一旁是彩繪壁畫的牆面與果樹。",nd:1}
 ];
 const J=document.getElementById('journal');
-ENTRIES.forEach(en=>{
+function renderJournal(){J.textContent='';const d=D();
+ENTRIES.forEach(e0=>{const x=d&&d.E&&d.E[e0.f],en=x?Object.assign({},e0,{h:x[0],txt:x[1]}):e0;
   const f=document.createElement('figure');f.className='entry';
   f.innerHTML=`<div class="photo"><img src="farm/${en.f}.jpg" alt="${en.h}：${en.txt}" loading="lazy"></div>
   <figcaption><div class="term"><b>${en.h}</b>${en.nd?"":"<span>2026.11.5</span>"}</div><p>${en.txt}</p></figcaption>`;
   J.appendChild(f);
-});
+});}
+renderJournal();
 
 /* 觀展留言：送到 Google 表單，經審核（試算表 E 欄填任何字）後由公開的 CSV 顯示 */
 const GB={
@@ -616,9 +637,9 @@ function loadNotes(){if(!GB.csv)return;fetch(GB.csv+(GB.csv.includes('?')?'&':'?
     li.append(w,d,p);ul.append(li)})}).catch(()=>{})}
 if(GB.form&&GB.name&&GB.msg){
   const F=document.getElementById('gform'),M=document.getElementById('gmsg');F.hidden=false;if(!GB.contact)document.getElementById('gc').hidden=true;document.getElementById('guest-wait').hidden=true;
-  F.addEventListener('submit',e=>{e.preventDefault();const b=F.querySelector('button');b.disabled=true;M.textContent='送出中…';
+  F.addEventListener('submit',e=>{e.preventDefault();const b=F.querySelector('button');b.disabled=true;M.textContent=U('sending','送出中…');
     const d=new URLSearchParams();d.append(GB.name,F.n.value.trim());d.append(GB.msg,F.m.value.trim());if(GB.contact)d.append(GB.contact,F.c.value.trim());
-    fetch(GB.form,{method:'POST',mode:'no-cors',body:d}).then(()=>{F.reset();M.textContent='感謝您的留言，審核後將刊出。'}).catch(()=>{M.textContent='送出失敗，請稍後再試。'}).finally(()=>b.disabled=false)});
+    fetch(GB.form,{method:'POST',mode:'no-cors',body:d}).then(()=>{F.reset();M.textContent=U('thanks','感謝您的留言，審核後將刊出。')}).catch(()=>{M.textContent=U('fail','送出失敗，請稍後再試。')}).finally(()=>b.disabled=false)});
   loadNotes();
 }
 
@@ -629,11 +650,22 @@ function conv(root,toS){const w=document.createTreeWalker(root,NodeFilter.SHOW_T
   while(n=w.nextNode()){if(n.parentNode.closest('script,style'))continue;
     if(toS){const o=n.nodeValue;let t='';for(const c of o)t+=T2S[c]||c;if(t!==o){ORIG.set(n,o);n.nodeValue=t}}
     else if(ORIG.has(n)){n.nodeValue=ORIG.get(n);ORIG.delete(n)}}}
-window.LANG='t';
-function setLang(l){window.LANG=l;conv(document.body,l==='s');document.documentElement.lang=l==='s'?'zh-Hans':'zh-Hant';
-  const b=document.getElementById('lang');b.textContent=l==='s'?'繁體':'简体';try{localStorage.setItem('lang',l)}catch(e){}}
-document.getElementById('lang').addEventListener('click',()=>setLang(window.LANG==='s'?'t':'s'));
-try{if(localStorage.getItem('lang')==='s')setLang('s')}catch(e){}
+const ZH=new Map(),ZT={title:document.title,desc:(document.querySelector('meta[name=description]')||{}).content};
+const HL={t:'zh-Hant',s:'zh-Hans',ja:'ja',en:'en',es:'es',fr:'fr'};
+function loadLang(l,cb){if(l==='t'||l==='s'||I18N[l])return cb();const sc=document.createElement('script');sc.src='i18n/'+l+'.js?v=1';
+  sc.onload=cb;sc.onerror=()=>{document.getElementById('lang').value=window.LANG};document.head.append(sc)}
+function setLang(l){if(!HL[l])l='t';loadLang(l,()=>applyLang(l))}
+function applyLang(l){conv(document.body,false);window.LANG=l;const d=D();
+  document.querySelectorAll('[data-i]').forEach(el=>{if(!ZH.has(el))ZH.set(el,el.innerHTML);
+    const v=d&&d.s&&d.s[el.dataset.i];el.innerHTML=v!=null?v:ZH.get(el)});
+  document.documentElement.lang=HL[l];document.title=d&&d.title||ZT.title;
+  const md=document.querySelector('meta[name=description]');if(md)md.content=d&&d.desc||ZT.desc;
+  const fi=document.querySelector('.facade img');if(fi){if(!fi.dataset.zh)fi.dataset.zh=fi.alt;fi.alt=U('facadeAlt',fi.dataset.zh)}
+  renderWorks();renderCounts();renderJournal();guestNote();paintLikes();
+  if(!V.hidden)openW(cur,lastFocus);
+  if(l==='s')conv(document.body,true);
+  document.getElementById('lang').value=l;try{localStorage.setItem('lang',l)}catch(e){}}
+document.getElementById('lang').addEventListener('change',e=>setLang(e.target.value));
 
 
 /* 按讚：送到 Google 表單（只有一題「作品」），讚數由公開 CSV 統計；每台裝置每幅限讚一次 */
@@ -643,7 +675,7 @@ try{LIKED=JSON.parse(localStorage.getItem('liked')||'{}')}catch(e){}
 function paintLikes(){if(!LK.form||!LK.csv)return;
   document.querySelectorAll('.like').forEach(b=>{const f=b.dataset.f;if(!f)return;b.hidden=false;
     const n=(LIKES[f]||0);b.querySelector('.n').textContent=n;b.setAttribute('aria-pressed',LIKED[f]?'true':'false');
-    b.querySelector('.h').textContent=LIKED[f]?'♥':'♡';b.setAttribute('aria-label',(LIKED[f]?'已按讚':'按讚')+'，目前 '+n+' 個讚')})}
+    b.querySelector('.h').textContent=LIKED[f]?'♥':'♡';b.setAttribute('aria-label',U('likeAria',(on,n)=>(on?'已按讚':'按讚')+'，目前 '+n+' 個讚')(!!LIKED[f],n))})}
 function doLike(f){if(!LK.form||LIKED[f])return;LIKED[f]=1;LIKES[f]=(LIKES[f]||0)+1;
   try{localStorage.setItem('liked',JSON.stringify(LIKED))}catch(e){}
   paintLikes();const d=new URLSearchParams();d.append(LK.field,f);fetch(LK.form,{method:'POST',mode:'no-cors',body:d}).catch(()=>{})}
@@ -655,10 +687,20 @@ function loadLikes(){if(!LK.csv)return paintLikes();fetch(LK.csv+(LK.csv.include
 if(/github\.io$|^localhost$|^127\.0\.0\.1$/.test(location.hostname))loadLikes();else LK.form='';
 /* 非正式網址（如預覽版）無法嵌入影片與留言，改為連到正式網站 */
 const OFFICIAL='https://ludrawing-sketch.github.io/lu-calligraphy/';
-if(!/github\.io$/.test(location.hostname)&&!/^(localhost|127\.0\.0\.1)$/.test(location.hostname)){
+const OFFSITE=!/github\.io$/.test(location.hostname)&&!/^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+function guestNote(){const w=document.getElementById('guest-wait');if(!w)return;
+  if(OFFSITE)w.innerHTML=U('offsite','請至正式網站留言：')+'<a href="'+OFFICIAL+'#guest" target="_blank" rel="noopener">'+OFFICIAL+'</a>';
+  else w.textContent=U('soon','留言功能即將開放，敬請期待。')}
+if(OFFSITE){
   const fr=document.querySelector('.film-frame');
-  if(fr)fr.outerHTML='<a class="film-frame film-link" href="https://www.youtube.com/watch?v=8tH5QpagMjA" target="_blank" rel="noopener"><span>▶　在 YouTube 觀看影片</span></a>';
+  if(fr)fr.outerHTML='<a class="film-frame film-link" href="https://www.youtube.com/watch?v=8tH5QpagMjA" target="_blank" rel="noopener"><span>▶　<span data-i="yt">在 YouTube 觀看影片</span></span></a>';
   const F=document.getElementById('gform');if(F)F.hidden=true;
-  const w=document.getElementById('guest-wait');if(w){w.hidden=false;w.innerHTML='請至正式網站留言：<a href="'+OFFICIAL+'#guest" target="_blank" rel="noopener">'+OFFICIAL+'</a>'}
+  const w=document.getElementById('guest-wait');if(w)w.hidden=false;guestNote();
 }
+/* 初始語言：網址 ?lang=ja ＞ 上次選擇 ＞ 瀏覽器語言 */
+(function(){let l=null;try{l=new URLSearchParams(location.search).get('lang')}catch(e){}
+  if(!l)try{l=localStorage.getItem('lang')}catch(e){}
+  if(!l){const n=(navigator.language||'').toLowerCase();
+    l=/^zh-(cn|sg|hans)/.test(n)?'s':/^zh/.test(n)?'t':/^ja/.test(n)?'ja':'t'}
+  if(l&&l!=='t')setLang(l)})();
 </script>
