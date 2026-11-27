@@ -692,7 +692,7 @@ try{if(localStorage.getItem('lang')==='s')setLang('s')}catch(e){}
 
 
 /* 按讚：送到 Google 表單（只有一題「作品」），讚數由公開 CSV 統計；每台裝置每幅限讚一次 */
-const LK={form:"https://docs.google.com/forms/d/e/1FAIpQLSdngXgsDmvkdWEUOi_UWGj3qQpe8_zBine3y6ctxw8BUw9G2A/formResponse",field:"entry.824275084",csv:""};
+const LK={form:"https://docs.google.com/forms/d/e/1FAIpQLSdngXgsDmvkdWEUOi_UWGj3qQpe8_zBine3y6ctxw8BUw9G2A/formResponse",field:"entry.824275084",csv:"https://docs.google.com/spreadsheets/d/e/2PACX-1vRmlxxszvf_XWxanNF8CbalNxIgdJBxDjxlwF-6OHIW5QVkXScxYaQheb8KKG_u6sC1xdIaAZPgHLVm/pub?gid=459948040&single=true&output=csv"};
 const LIKES={};let LIKED={};
 try{LIKED=JSON.parse(localStorage.getItem('liked')||'{}')}catch(e){}
 function paintLikes(){if(!LK.form||!LK.csv)return;
