@@ -19,6 +19,10 @@
   --line:#c9c5b8;
   --seal:#b2322a;       /* 朱砂印泥 */
   --field:#5d6b3c;      /* 稻田綠 */
+  --brick:#a2412b;      /* 金門紅磚 */
+  --brick-d:#7e2f1f;
+  --tile:#b9583d;       /* 紅瓦 */
+  --granite:#9a978e;    /* 花崗石 */
   --mount:#f7f6f1;      /* 裱褙 */
   --font-brush:"LXGW WenKai TC","Kaiti TC","BiauKai","DFKai-SB","STKaiti",serif;
   --font-serif:"Noto Serif TC","Songti TC","PMingLiU",serif;
@@ -26,10 +30,10 @@
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --paper:#171816;--paper-2:#20221f;--ink:#e8e5da;--ink-soft:#a3a397;--line:#3a3c36;
-  --seal:#d4544a;--field:#9aac6c;--mount:#232521;color-scheme:dark}}
+  --seal:#d4544a;--field:#9aac6c;--mount:#232521;--brick:#8c3826;--brick-d:#6a2a1c;--tile:#a54e37;--granite:#6f6d66;color-scheme:dark}}
 :root[data-theme="dark"]{
   --paper:#171816;--paper-2:#20221f;--ink:#e8e5da;--ink-soft:#a3a397;--line:#3a3c36;
-  --seal:#d4544a;--field:#9aac6c;--mount:#232521;color-scheme:dark}
+  --seal:#d4544a;--field:#9aac6c;--mount:#232521;--brick:#8c3826;--brick-d:#6a2a1c;--tile:#a54e37;--granite:#6f6d66;color-scheme:dark}
 
 *{box-sizing:border-box}
 body{background:var(--paper);color:var(--ink);font-family:var(--font-serif);font-size:17px;line-height:1.85;
@@ -109,6 +113,8 @@ section{padding-block:80px}
 .lineage .v2{color:var(--ink-soft);font-size:15px}
 .lineage button{all:unset;cursor:pointer;color:var(--ink);border-bottom:1px solid var(--line)}
 .lineage button:hover{color:var(--seal);border-color:var(--seal)}
+.hlink{all:unset;cursor:pointer;color:#fff6e6;border-bottom:1px solid rgba(255,240,220,.5)}
+.hlink:hover{border-color:#fff6e6}
 .timeline{list-style:none;margin:0;padding:0;border-left:1px solid var(--line)}
 .timeline li{display:grid;grid-template-columns:72px 1fr;gap:14px;padding:0 0 26px 20px;position:relative}
 .timeline li::before{content:"";position:absolute;left:-4px;top:12px;width:7px;height:7px;background:var(--ink);border-radius:50%}
@@ -140,6 +146,51 @@ section{padding-block:80px}
 .colophon p{margin:0;color:var(--ink-soft);max-width:34em}
 .colophon .v{writing-mode:vertical-rl;font-family:var(--font-brush);font-size:22px;letter-spacing:.3em;color:var(--ink-soft)}
 footer{font-size:13px;color:var(--ink-soft);padding-block:0 32px}
+
+
+/* 金門古厝元素：燕尾脊、紅瓦、紅磚 */
+.ridge{display:block;width:100%;height:clamp(34px,5vw,58px);color:var(--brick)}
+.ridge .tiles{fill:url(#tilepat)}
+.ridge-foot{transform:scaleY(-1);opacity:.85;margin-top:8px}
+.sec-head .en::before{content:"";display:inline-block;width:26px;height:9px;margin-right:10px;vertical-align:middle;
+  background:var(--brick);clip-path:polygon(0 0,18% 70%,82% 70%,100% 0,100% 30%,86% 100%,14% 100%,0 30%)}
+.home{position:relative;color:#f3ead9;background-color:var(--brick);
+  background-image:
+    linear-gradient(rgba(0,0,0,.10) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,0,0,.10) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,0,0,.10) 1px,transparent 1px);
+  background-size:100% 22px,64px 44px,64px 44px;background-position:0 0,0 0,32px 22px;
+  box-shadow:0 0 0 100vmax var(--brick);clip-path:inset(0 -100vmax)}
+.home::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--brick) 0 40%,color-mix(in srgb,var(--brick) 55%,transparent));pointer-events:none;
+  box-shadow:0 0 0 100vmax var(--brick);clip-path:inset(0 -100vmax);opacity:.9}
+.home>*{position:relative;z-index:1}
+.home .sec-head h2{color:#fff6e6}
+.home .sec-head .en,.home .sec-head p{color:#ecd6c0}
+.home .sec-head .en::before{background:#f3ead9}
+.home-grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:56px;align-items:start}
+.home-text p{margin:0 0 16px;max-width:34em}
+.roots{list-style:none;margin:28px 0 0;padding:0;display:grid;gap:0}
+.roots li{display:grid;grid-template-columns:6.5em 1fr;gap:14px;padding:14px 0;border-top:1px solid rgba(255,240,220,.28)}
+.roots li:last-child{border-bottom:1px solid rgba(255,240,220,.28)}
+.roots .k{font-family:var(--font-brush);font-size:19px;color:#fff6e6}
+.roots .v2{font-size:15px;color:#ecd6c0}
+.cite{font-size:13px;color:#e2c7ae;margin-top:22px;line-height:1.7}
+.cite a{color:#fff6e6}
+.lantern{justify-self:center;display:grid;justify-items:center}
+.lantern .cord{width:2px;height:40px;background:#e8cdb0}
+.lantern .cap{width:64px;height:12px;background:#2a1c14;border-radius:3px}
+.lantern .body{width:170px;height:230px;border-radius:50%/46%;background:radial-gradient(ellipse at 50% 40%,#f6e7c8,#e9cfa0 70%,#d6b27e);
+  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;justify-items:center;color:#9a2a1a;
+  box-shadow:0 18px 40px -16px rgba(0,0,0,.55),inset 0 -10px 18px rgba(120,60,20,.18);position:relative}
+.lantern .body::before{content:"";position:absolute;inset:0;border-radius:inherit;
+  background:repeating-linear-gradient(180deg,transparent 0 17px,rgba(150,90,40,.18) 17px 18px)}
+.lantern .sur{font-family:var(--font-brush);font-weight:700;font-size:74px;line-height:1;grid-column:2;position:relative}
+.lantern .tag{writing-mode:vertical-rl;font-family:var(--font-brush);font-size:17px;letter-spacing:.25em;position:relative}
+.lantern .tag.l{grid-column:3}.lantern .tag.r{grid-column:1;grid-row:1}
+.lantern .tassel{width:26px;height:34px;background:linear-gradient(#2a1c14 0 10px,#b3301f 10px);clip-path:polygon(30% 0,70% 0,70% 30%,100% 100%,0 100%,30% 30%)}
+.lantern figcaption{margin-top:14px;font-size:13px;color:#ecd6c0;text-align:center;letter-spacing:.1em}
+@media (max-width:820px){.home-grid{grid-template-columns:1fr}.lantern{order:-1}}
+@media (max-width:540px){.roots li{grid-template-columns:1fr;gap:2px}}
 
 /* 留言板 */
 .guest{border-top:1px solid var(--line)}
@@ -209,10 +260,17 @@ footer{font-size:13px;color:var(--ink-soft);padding-block:0 32px}
     <ul>
       <li><a href="#works">展出作品</a></li>
       <li><a href="#career">關於藝術家</a></li>
+      <li><a href="#home">故鄉</a></li>
       <li><a href="#farm">田園札記</a></li>
       <li><a href="#guest">觀展留言</a></li>
     </ul>
   </nav>
+  <svg class="ridge" viewBox="0 0 1000 60" preserveAspectRatio="none" aria-hidden="true">
+    <defs><pattern id="tilepat" width="14" height="16" patternUnits="userSpaceOnUse"><rect width="14" height="16" fill="var(--tile)"/><rect x="0" width="3" height="16" fill="var(--brick-d)" opacity=".55"/></pattern></defs>
+    <path fill="currentColor" d="M0,2 C30,26 70,33 120,34 L880,34 C930,33 970,26 1000,2 L994,16 C968,36 932,42 880,42 L120,42 C68,42 32,36 6,16 Z"/>
+    <path fill="currentColor" d="M18,0 C40,18 70,26 110,28 L110,32 C66,30 36,22 14,6 Z M982,0 C960,18 930,26 890,28 L890,32 C934,30 964,22 986,6 Z"/>
+    <rect class="tiles" x="120" y="42" width="760" height="16"/>
+  </svg>
 
   <header class="hero" id="top">
     <h1 class="hero-name">呂光浯<span class="seal lg" aria-hidden="true">光浯</span></h1>
@@ -263,6 +321,33 @@ footer{font-size:13px;color:var(--ink-soft);padding-block:0 32px}
     </div>
   </section>
 
+  <section id="home" class="home" aria-labelledby="home-h">
+    <div class="sec-head">
+      <h2 id="home-h">故鄉　下湖</h2><span class="en">HOMETOWN</span>
+      <p>金門縣金湖鎮溪湖里・下湖（舊名霞湖）</p>
+    </div>
+    <div class="home-grid">
+      <div class="home-text">
+        <p>呂光浯先生出身金門下湖。下湖舊名「霞湖」，位於金湖鎮溪湖里，與溪邊、復國墩、下新厝、后壟同屬一里。</p>
+        <p>據西村呂氏族譜所載，金門呂氏源自泉州南安樸兜鄉。宋代，呂之才（號法溪，別號舜臣）與其弟三才（號壁溪）渡海遷居浯洲西倉，即今西村，開基傳衍，成為金門呂氏大宗。法溪公長房、次房的子孫，日後各有一支分居下湖。</p>
+        <ul class="roots">
+          <li><span class="k">祖籍</span><span class="v2">福建泉州南安樸兜鄉</span></li>
+          <li><span class="k">開基</span><span class="v2">宋代，呂之才（法溪公）遷居浯洲西倉（今金門西村）</span></li>
+          <li><span class="k">分衍</span><span class="v2">長房支分土樓、下湖、溪邊；次房支分林兜、下湖</span></li>
+          <li><span class="k">燈號</span><span class="v2">「中原文獻」，金門呂氏世代相傳</span></li>
+          <li><span class="k">鄉賢書家</span><span class="v2">清代隸書名家呂世宜生於西村，呂光浯先生曾臨其隸書〈<button type="button" class="hlink" data-w="w339">王孫季子</button>〉</span></li>
+        </ul>
+        <p class="cite">資料來源：金門縣金湖鎮公所〈<a href="https://kinhu.kinmen.gov.tw/cp.aspx?n=EC28BD4D5ED6A474" target="_blank" rel="noopener">溪湖里</a>〉；馬定〈<a href="https://www.kmdn.gov.tw/1117/1271/1274/36728" target="_blank" rel="noopener">金門西村呂氏淵源</a>〉，《金門日報》，2005；陳炳容〈<a href="https://www.kmdn.gov.tw/1117/1271/1274/37757" target="_blank" rel="noopener">金門族譜研究之一：移民與地名</a>〉，《金門日報》，2005。遷金年代各家記載略有出入。</p>
+      </div>
+      <figure class="lantern" aria-label="呂氏燈號「中原文獻」">
+        <span class="cord"></span><span class="cap"></span>
+        <span class="body"><span class="tag r">中原</span><span class="sur">呂</span><span class="tag l">文獻</span></span>
+        <span class="cap"></span><span class="tassel"></span>
+        <figcaption>呂氏燈號　中原文獻</figcaption>
+      </figure>
+    </div>
+  </section>
+
   <section id="farm" class="farm" aria-labelledby="farm-h">
     <div class="wrap">
       <div class="sec-head">
@@ -298,6 +383,10 @@ footer{font-size:13px;color:var(--ink-soft);padding-block:0 32px}
     </div>
     <div class="v" aria-hidden="true">筆耕　田耕</div>
   </div>
+  <svg class="ridge ridge-foot" viewBox="0 0 1000 60" preserveAspectRatio="none" aria-hidden="true">
+    <path fill="currentColor" d="M0,2 C30,26 70,33 120,34 L880,34 C930,33 970,26 1000,2 L994,16 C968,36 932,42 880,42 L120,42 C68,42 32,36 6,16 Z"/>
+    <rect class="tiles" x="120" y="42" width="760" height="16"/>
+  </svg>
   <footer>© 呂光浯　·　作品圖像版權所有，請勿轉載</footer>
 </div>
 
@@ -379,7 +468,7 @@ document.querySelectorAll('.filters button').forEach(btn=>{const n=btn.dataset.f
   btn.insertAdjacentHTML('beforeend',`<span class="n">${n}</span>`)});
 document.getElementById('facts').innerHTML=`<li><b>${WORKS.length}</b><span>件 作品收錄</span></li>`+
   ['楷書','行草','隸書','對聯'].map(k=>`<li><b>${CNT[k]}</b><span>${k}</span></li>`).join('');
-document.querySelectorAll('.lineage button').forEach(b=>b.addEventListener('click',()=>openW(WORKS.findIndex(w=>w.f===b.dataset.w),b)));
+document.querySelectorAll('.lineage button,.hlink').forEach(b=>b.addEventListener('click',()=>openW(WORKS.findIndex(w=>w.f===b.dataset.w),b)));
 grid.addEventListener('click',e=>{
   const b=e.target.closest('.work');if(!b)return;openW(+b.dataset.i,b)});
 function openW(i,from){const w=WORKS[i];lastFocus=from;
