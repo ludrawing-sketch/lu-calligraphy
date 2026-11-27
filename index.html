@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="筆耕・田耕——呂光浯書法線上個展。金門書法家呂光浯近年楷書、行草、隸書與對聯作品三十九件。">
-<title>筆耕・田耕｜呂光浯書法線上個展</title>
+<meta name="description" content="筆耕・田耕——田園書法家呂光浯線上個展。金門書法家呂光浯近年楷書、行草、隸書與對聯作品三十九件。">
+<title>筆耕・田耕｜田園書法家 呂光浯 線上個展</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -273,6 +273,29 @@ html:is(:lang(en),:lang(es),:lang(fr)) body{font-size:19px;font-variant-numeric:
 html:is(:lang(en),:lang(es),:lang(fr),:lang(ja)) .eyebrow,html:is(:lang(en),:lang(es),:lang(fr),:lang(ja)) .hero-body .sub{letter-spacing:.12em}
 html:is(:lang(en),:lang(es),:lang(fr)) .work .t{white-space:normal;font-size:19px;line-height:1.3}
 .v-zh{display:block;font-size:.62em;color:var(--ink-soft);margin-top:4px;font-family:"LXGW WenKai TC",serif}
+.kmap{margin:48px 0 0;padding:28px clamp(12px,3vw,32px) 20px;border:1px solid rgba(243,234,217,.35);background:rgba(0,0,0,.08)}
+.kmap svg{display:block;width:100%;height:auto;max-height:520px}
+.kmap .land{fill:#f3ead9;stroke:#fff6e6;stroke-width:1.5;stroke-linejoin:round}
+.kmap text{font-family:var(--font-brush);fill:#4a2a1c;font-size:22px}
+.kmap .sea{fill:#f3ead9;opacity:.75;font-size:24px;letter-spacing:.4em;font-style:italic}
+.kmap .isle{fill:#8b6a55;font-size:30px;letter-spacing:.6em}.kmap .isle.sm{font-size:22px;letter-spacing:.3em;fill:#f3ead9}
+.kmap .pl circle,.kmap .pl path{fill:#4a2a1c}
+.kmap .here .dot{fill:var(--seal);stroke:#fff6e6;stroke-width:3}
+.kmap .here .pulse{fill:none;stroke:var(--seal);stroke-width:3;transform-origin:784px 308px;animation:kpulse 2.4s ease-out infinite}
+@keyframes kpulse{from{transform:scale(1);opacity:.9}to{transform:scale(3.2);opacity:0}}
+@media (prefers-reduced-motion:reduce){.kmap .here .pulse{animation:none;opacity:.5;transform:scale(1.8)}}
+.kmap .hn{fill:var(--seal);font-size:34px;font-weight:700;paint-order:stroke;stroke:#f3ead9;stroke-width:6px}
+.kmap .compass path{fill:#f3ead9}.kmap .compass text,.kmap .scale text{fill:#f3ead9;font-size:16px;font-family:var(--font-serif)}
+.kmap .scale path{stroke:#f3ead9;stroke-width:2;fill:none}
+.kmap figcaption{margin-top:10px;font-size:14px;color:#ecd6c0;letter-spacing:.1em;text-align:center}
+@media (max-width:640px){.kmap{padding:14px 6px 12px}.kmap text{font-size:42px}.kmap .hn{font-size:60px}.kmap .isle{font-size:46px}.kmap .isle.sm{font-size:38px}.kmap .sea{font-size:40px}.kmap .compass text,.kmap .scale text{font-size:28px}.kmap figcaption{font-size:13px}}
+.tab{position:relative;padding-bottom:4px}
+.tab[aria-current="page"]{color:var(--seal)!important}
+.tab[aria-current="page"]::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--seal)}
+.page[hidden]{display:none}
+.pager{display:flex;justify-content:flex-end;gap:16px;padding:28px 0 56px;flex-wrap:wrap}
+.pager a{font-family:var(--font-brush);font-size:19px;color:var(--seal);text-decoration:none;border:1px solid var(--line);padding:6px 18px;border-radius:2px}
+.pager a:hover{border-color:var(--seal)}
 .lang{appearance:none;-webkit-appearance:none;background:none;border:1px solid var(--line);color:var(--ink-soft);font-family:var(--font-brush);font-size:15px;padding:0 10px;border-radius:2px;cursor:pointer;line-height:1.8}
 .lang:hover{border-color:var(--ink);color:var(--ink)}
 .viewer .close{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));right:max(16px,env(safe-area-inset-right,0px));
@@ -311,10 +334,9 @@ html:is(:lang(en),:lang(es),:lang(fr)) .work .t{white-space:normal;font-size:19p
   <nav class="nav" aria-label="主選單">
     <a class="brand" href="#top"><span class="seal sm" aria-hidden="true">呂</span>呂光浯書法</a>
     <ul>
-      <li><a href="#works" data-i="nav1">展出作品</a></li>
-      <li><a href="#career" data-i="nav2">關於藝術家</a></li>
-      <li><a href="#home" data-i="nav3">故鄉</a></li>
-      <li><a href="#farm" data-i="nav4">田園札記</a></li>
+      <li><a href="#art" class="tab" data-tab="art" data-i="nav1">書法・書家</a></li>
+      <li><a href="#home" class="tab" data-tab="home" data-i="nav3">故鄉・下湖</a></li>
+      <li><a href="#farm" class="tab" data-tab="farm" data-i="nav4">田園生活</a></li>
       <li><a href="#guest" data-i="nav5">觀展留言</a></li>
       <li><select class="lang" id="lang" aria-label="語言 Language"><option value="t">繁體中文</option><option value="s">简体中文</option><option value="ja">日本語</option><option value="en">English</option><option value="es">Español</option><option value="fr">Français</option></select></li>
     </ul>
@@ -326,20 +348,17 @@ html:is(:lang(en),:lang(es),:lang(fr)) .work .t{white-space:normal;font-size:19p
     <rect class="tiles" x="120" y="42" width="760" height="16"/>
   </svg>
 
-  <header class="hero" id="top">
+  <main class="page" id="pg-art" data-page="art">
+  <header class="hero">
     <h1 class="hero-name"><span class="nm">呂光浯</span><span class="seal lg" aria-hidden="true"><b>浯光</b></span></h1>
     <div class="hero-body">
-      <p class="eyebrow" data-i="eyebrow">線上個展　·　筆墨傳家</p>
+      <p class="eyebrow" data-i="eyebrow">田園書法家　·　線上個展</p>
       <h2 data-i="motto">筆耕・田耕</h2>
       <p class="sub" data-i="sub">書法個展　2025 – 2026</p>
       <p data-i="intro">生於金門，以筆耕字，以鋤耕田。本展精選其近年楷書、行草、隸書與對聯作品三十九件，並收錄藝術家於金門田間的日常。字與土地，皆是長年養成。</p>
       <ul class="facts" id="facts"></ul>
     </div>
   </header>
-  <figure class="facade">
-    <img src="home/temple.jpg" alt="金門下湖呂氏家廟正面全景：燕尾脊、紅瓦，匾額「呂氏家廟」" width="1706" height="880">
-    <figcaption data-i="facade">金門下湖　呂氏家廟</figcaption>
-  </figure>
 
   <section id="works" aria-labelledby="works-h">
     <div class="sec-head">
@@ -379,11 +398,35 @@ html:is(:lang(en),:lang(es),:lang(fr)) .work .t{white-space:normal;font-size:19p
     </div>
   </section>
 
-  <section id="home" class="home" aria-labelledby="home-h">
+  <nav class="pager wrap-pg" aria-label="分頁"><a href="#home" data-i="pgHome">下一頁：故鄉・下湖 →</a></nav>
+  </main>
+  <main class="page" id="pg-home" data-page="home" hidden>
+  <figure class="facade">
+    <img src="home/temple.jpg" alt="金門下湖呂氏家廟正面全景：燕尾脊、紅瓦，匾額「呂氏家廟」" width="1706" height="880">
+    <figcaption data-i="facade">金門下湖　呂氏家廟</figcaption>
+  </figure>
+  <section id="hometown" class="home" aria-labelledby="home-h">
     <div class="sec-head">
       <h2 id="home-h" data-i="homeH">故鄉　下湖</h2><span class="en">桑梓根源</span>
       <p data-i="homeP">金門縣金湖鎮溪湖里・下湖（舊名霞湖）</p>
     </div>
+    <figure class="kmap" style="margin:0 0 48px">
+      <svg viewBox="0 0 900 553" role="img" aria-labelledby="kmap-t">
+        <title id="kmap-t" data-i="mapT">金門地圖：下湖位於大金門東半部，金湖鎮溪湖里</title>
+        <path class="land" d="M518.1,374.0L500.6,382.9L495.3,384.2L478.3,394.7L468.9,404.7L461.4,414.7L457.2,418.2L454.4,426.1L449.0,431.1L445.2,437.4L442.5,439.5L439.7,447.2L436.7,451.0L436.1,453.9L433.6,455.8L431.4,459.3L424.8,486.7L414.5,507.0L406.9,509.8L404.9,512.4L400.7,511.7L399.7,510.3L398.2,510.8L394.1,513.8L392.9,518.0L392.3,516.7L390.3,515.9L381.7,516.4L379.5,511.5L377.3,509.2L375.3,508.3L374.8,508.9L375.3,507.9L370.4,508.6L368.9,504.8L367.1,503.7L364.0,504.2L360.1,500.9L353.1,503.3L352.8,500.2L348.7,500.8L348.2,499.8L349.0,498.8L347.2,498.6L346.9,495.2L343.4,494.9L343.9,491.2L342.3,492.2L340.6,491.8L338.2,486.0L334.0,483.7L325.3,480.6L315.0,480.5L307.9,483.0L309.9,476.5L308.6,474.1L306.6,474.6L305.5,474.0L306.6,471.8L305.8,470.5L304.7,470.6L304.7,468.8L299.4,466.9L296.2,463.5L291.9,462.3L290.7,455.8L287.8,451.6L284.2,449.4L278.8,448.6L270.9,439.6L260.5,433.6L259.0,430.0L254.1,425.1L253.8,423.2L255.4,419.9L257.1,420.2L258.6,417.5L259.0,418.5L261.9,418.3L264.0,416.5L266.4,416.6L266.3,417.6L267.0,417.3L267.8,418.3L271.9,416.5L273.5,419.2L273.2,416.7L278.9,418.3L279.7,414.3L279.1,418.4L281.2,418.8L284.8,416.7L286.9,413.9L290.6,416.8L290.8,419.9L294.4,422.2L301.7,424.1L307.3,422.1L318.8,414.6L325.4,401.9L327.0,394.3L325.5,391.8L323.0,390.6L323.0,387.6L327.0,384.3L332.5,381.5L334.9,378.4L335.9,379.4L345.5,380.5L352.0,376.7L353.3,373.4L346.5,358.5L347.3,337.3L344.5,322.4L337.6,303.7L329.7,292.9L325.9,286.1L324.7,272.0L325.9,268.1L329.6,262.7L321.6,257.3L309.3,253.5L295.8,243.5L284.0,237.9L281.7,235.4L281.6,233.4L288.3,226.8L288.7,221.8L294.9,210.3L295.4,206.0L300.7,204.0L304.7,199.2L308.4,200.0L310.8,198.8L314.9,198.5L318.4,196.6L323.1,188.0L336.0,175.4L345.3,176.8L350.6,176.0L352.2,173.7L350.0,168.2L354.6,166.5L360.1,169.5L364.4,167.9L363.7,169.3L368.2,173.9L372.5,174.1L382.3,180.9L383.5,183.8L401.1,202.0L408.5,207.5L415.4,214.4L419.3,216.2L422.4,220.4L424.6,220.8L432.9,228.3L457.4,244.8L476.4,253.2L481.4,252.6L485.8,250.9L495.8,253.3L504.2,257.7L509.6,258.3L514.4,260.6L529.9,264.3L540.2,264.8L544.8,263.6L547.3,259.0L552.8,254.9L556.9,249.6L560.0,247.3L563.5,247.9L562.0,244.6L561.7,240.2L565.6,234.8L567.0,234.8L564.2,238.5L563.7,243.0L566.9,249.6L569.7,249.2L573.8,245.1L577.6,242.9L579.8,238.8L583.7,225.2L583.9,216.8L579.7,207.1L571.4,196.0L569.4,195.3L567.2,196.2L568.4,194.5L568.1,193.3L561.5,191.3L561.2,189.5L564.3,188.0L567.7,188.5L570.3,190.3L581.9,190.5L585.8,189.6L588.5,185.9L586.6,181.1L591.9,179.0L594.0,174.3L600.6,171.9L608.4,166.7L608.3,168.3L610.3,164.4L610.8,160.5L607.1,150.1L607.1,146.8L605.2,143.2L600.4,141.8L599.5,139.6L604.1,137.1L605.1,135.2L607.0,135.3L607.2,115.6L605.7,108.4L604.8,106.4L602.4,104.7L602.4,103.1L604.9,99.7L607.4,98.1L621.2,95.7L625.0,96.6L628.8,93.7L633.9,92.0L636.4,86.9L639.5,85.2L642.3,82.1L652.4,79.0L658.1,78.6L659.7,77.0L662.0,67.9L660.0,62.5L656.7,61.4L656.0,58.4L654.1,57.3L654.2,55.7L656.4,52.4L656.4,49.2L654.8,47.7L651.4,48.7L649.8,47.6L650.0,46.1L646.9,41.8L649.3,39.1L649.2,35.8L650.3,35.0L654.7,36.5L654.8,38.3L656.1,39.0L655.8,41.4L658.7,40.5L656.7,44.2L660.4,49.9L664.5,52.2L668.8,52.7L673.6,50.5L673.2,48.9L669.8,48.5L670.6,46.7L678.0,41.6L682.6,40.4L686.6,43.5L689.1,43.9L692.4,41.4L693.7,37.1L696.5,37.5L696.9,39.1L695.0,40.0L694.3,44.5L698.3,45.4L702.4,48.2L704.6,45.8L708.8,46.6L706.6,52.4L704.2,51.4L702.8,52.3L703.3,56.4L705.2,60.8L708.3,63.0L708.8,66.4L710.5,67.1L713.4,82.5L721.5,99.8L725.0,104.9L726.2,105.5L728.8,102.6L733.3,102.0L735.4,104.8L738.7,103.3L744.6,103.9L746.7,106.9L751.1,108.3L755.0,104.9L757.7,104.5L759.4,102.1L761.6,104.4L765.2,104.5L765.1,106.2L766.6,108.2L768.2,106.0L770.3,105.2L772.7,105.5L774.8,107.7L775.6,109.8L773.1,113.0L772.7,116.4L773.6,119.2L771.9,124.6L774.3,141.1L777.7,148.5L782.0,148.2L785.4,150.9L785.4,157.5L787.5,157.8L791.8,166.8L795.5,182.0L799.2,191.2L803.1,197.8L805.2,200.6L810.4,204.2L811.6,203.1L811.4,201.3L817.4,197.1L818.1,195.3L820.2,194.9L823.3,197.3L825.1,196.1L826.9,196.5L828.6,195.0L831.4,196.7L831.6,201.2L836.6,203.5L835.7,206.3L834.4,206.7L832.6,206.4L830.9,203.3L829.3,203.5L828.5,205.6L829.1,206.5L825.9,206.3L823.3,209.6L823.9,212.0L822.5,211.6L821.3,212.8L818.2,213.3L816.8,215.6L814.5,215.7L813.3,218.6L813.3,225.0L814.3,227.9L817.0,227.2L818.1,228.2L817.4,229.6L814.6,230.1L814.1,231.8L815.4,238.4L816.9,261.4L821.9,279.0L823.7,282.4L825.6,283.2L824.6,284.4L825.1,285.9L829.3,292.6L834.7,296.3L840.6,297.0L842.9,296.2L845.4,293.7L846.8,294.2L844.4,296.0L847.0,296.3L848.0,301.1L847.3,306.3L845.5,310.2L843.7,311.6L841.9,310.9L843.1,312.4L840.3,314.3L842.7,315.1L842.4,316.5L840.5,317.8L841.8,320.9L849.3,318.3L848.2,320.1L843.3,323.5L844.7,324.4L845.4,328.1L847.3,330.9L844.8,332.0L843.8,330.3L842.4,329.9L841.2,335.0L836.2,335.8L832.9,334.5L832.7,332.2L831.4,330.9L827.5,329.9L822.7,331.4L818.6,334.8L817.3,338.0L818.0,341.2L815.9,340.8L813.6,343.1L811.9,348.9L814.4,354.1L815.9,354.8L817.1,354.1L817.8,354.8L816.5,361.7L817.7,364.4L819.3,364.4L817.3,369.5L818.6,370.5L821.4,369.5L821.7,370.7L822.8,368.7L825.7,373.4L819.0,378.1L816.9,378.2L814.2,384.2L812.4,384.9L812.8,385.7L811.9,386.2L808.1,386.7L804.3,383.0L802.6,382.6L796.0,384.5L795.3,386.7L789.8,394.6L789.8,398.7L791.5,403.2L791.2,409.4L788.1,414.6L783.8,417.6L783.4,419.7L781.4,419.6L778.5,417.5L774.1,418.0L770.1,421.8L764.7,423.6L759.3,428.4L760.1,429.7L758.6,429.9L757.3,432.2L754.6,431.6L747.4,432.4L743.1,434.1L739.2,433.9L741.4,439.6L741.0,440.6L738.7,439.1L736.3,439.3L733.0,442.3L728.1,443.5L722.5,441.9L719.5,443.2L717.8,445.7L710.8,446.2L709.0,444.2L711.0,442.7L705.6,438.0L709.4,441.3L710.1,440.2L717.5,440.1L718.3,440.8L719.4,439.8L722.9,439.6L727.0,434.6L726.1,427.0L709.8,428.8L705.6,433.4L704.7,432.7L709.1,428.1L726.7,426.2L729.8,421.7L729.0,417.5L722.6,403.8L715.0,394.1L711.6,385.3L709.0,384.1L692.8,383.2L674.4,377.7L667.8,377.5L658.7,372.5L653.8,376.5L657.9,372.0L657.4,368.9L656.2,369.1L655.9,368.1L657.2,367.5L658.6,364.5L656.0,363.3L652.6,372.2L653.1,368.3L649.6,366.6L646.7,362.1L643.5,360.8L635.3,354.3L628.7,352.3L621.5,352.5L616.3,351.1L612.4,351.2L610.9,347.8L608.1,349.0L601.3,349.7L589.0,352.6L582.7,351.9L574.8,353.3L553.4,359.8L547.3,362.7L533.9,366.3L518.1,374.0ZM208.7,384.3L207.7,388.2L206.9,388.6L207.1,390.4L206.2,390.9L207.1,393.1L205.2,394.7L200.7,394.0L198.3,394.8L199.0,389.7L198.0,389.5L197.1,386.1L188.9,384.4L186.8,385.6L181.8,385.5L175.2,386.8L166.2,391.7L158.8,398.2L157.7,400.0L158.1,401.4L155.8,403.8L154.6,408.4L155.5,411.7L158.1,414.3L159.9,413.3L161.3,414.3L154.4,423.3L151.6,423.3L142.4,430.9L140.6,430.6L140.2,428.5L141.5,425.1L142.5,424.7L141.6,423.0L142.5,423.0L139.2,420.7L132.0,419.7L121.3,422.6L110.3,430.1L106.7,433.7L103.0,438.8L101.0,443.3L93.6,453.4L89.4,451.3L87.6,449.3L83.5,439.9L82.1,438.8L68.2,436.4L59.4,437.8L57.4,436.7L56.5,433.4L52.9,432.0L49.9,426.4L53.7,426.9L56.5,429.4L59.4,429.0L64.5,426.0L67.3,420.6L70.6,417.8L74.9,418.2L76.1,411.7L74.4,402.1L67.5,385.4L67.5,383.3L69.1,381.5L73.9,379.3L89.2,377.3L95.1,372.5L98.4,367.3L102.7,339.0L102.3,323.1L104.1,318.8L104.2,313.7L106.6,309.5L112.6,305.8L124.0,302.7L127.5,304.2L133.5,302.2L139.5,304.9L148.4,304.4L149.8,302.0L149.1,294.6L153.2,293.9L156.3,290.7L160.1,292.0L163.9,291.1L165.4,292.8L168.1,293.9L172.2,292.4L177.0,298.3L181.9,302.3L192.2,309.3L193.5,311.1L206.7,321.0L219.9,324.1L217.7,330.9L217.5,337.3L218.7,341.4L218.2,347.5L211.9,351.9L208.6,356.0L209.0,361.7L210.8,362.8L211.1,367.4L212.7,368.0L213.3,372.0L212.9,373.2L209.7,375.0L207.9,378.3L208.1,381.0L206.3,381.9L206.6,383.6L208.7,384.3ZM733.8,56.0L743.5,50.4L744.3,50.7L745.1,54.7L743.0,55.6L736.9,58.1L737.4,59.5L735.9,59.1L734.3,60.4L731.2,58.8L733.8,56.0ZM103.6,454.1L107.3,454.6L109.3,457.5L111.0,458.1L110.1,459.7L107.4,460.1L104.7,460.5L102.2,458.7L101.6,455.7L103.6,454.1ZM660.3,36.1L659.9,33.7L660.8,32.9L664.8,34.4L666.4,37.5L664.8,38.1L663.9,39.6L661.7,39.6L660.3,36.1ZM799.4,418.5L801.1,419.9L800.9,422.0L798.1,425.5L796.2,426.4L795.8,423.4L798.0,419.3L799.4,418.5ZM856.0,308.8L858.6,306.4L859.7,307.1L859.0,309.0L852.0,311.1L848.3,311.7L847.6,310.6L848.2,309.6L853.2,309.9L856.0,308.8ZM463.1,437.1L463.1,439.1L458.8,442.3L457.7,442.1L458.2,441.0L463.1,437.1ZM802.5,413.4L802.9,410.8L804.3,411.3L804.5,412.9L802.3,416.6L801.7,415.8L802.5,413.4ZM435.4,484.4L436.3,487.0L435.0,488.2L434.2,485.8L435.4,484.4ZM863.5,306.3L864.6,307.1L864.1,312.2L863.6,313.0L863.0,312.3L863.5,306.3ZM142.4,268.0L143.4,266.5L144.9,267.0L143.9,268.5L142.4,268.0ZM437.9,502.8L438.4,504.2L436.5,505.8L436.6,503.9L437.9,502.8ZM830.7,259.5L831.8,259.4L830.3,262.1L829.7,260.1L830.7,259.5ZM111.6,275.7L112.6,275.0L113.9,275.7L112.6,276.6L111.6,275.7ZM111.7,239.3L112.5,239.9L111.7,240.4L111.7,239.3ZM430.9,514.2L431.1,515.1L430.3,515.2L430.9,514.2Z"/>
+        <text class="sea" x="640" y="505" data-i="mapLiaoluo">料羅灣</text>
+        <text class="isle" x="470" y="215" data-i="mapBig">大金門</text>
+        <text class="isle sm" x="150" y="268" text-anchor="middle" data-i="mapLieyu">烈嶼</text>
+        <g class="pl"><circle cx="375" cy="362" r="5"/><text x="375" y="392" text-anchor="middle" data-i="mapJincheng">金城</text></g>
+        <g class="pl"><circle cx="711" cy="342" r="5"/><text x="711" y="372" text-anchor="middle" data-i="mapShanwai">山外</text></g>
+        <g class="pl"><path d="M641,272 l9,15 h-18z"/><text x="641" y="262" text-anchor="middle" data-i="mapTaiwu">太武山</text></g>
+        <g class="here"><circle class="pulse" cx="784" cy="308" r="10"/><circle class="dot" cx="784" cy="308" r="9"/>
+          <text class="hn" x="784" y="268" text-anchor="middle" data-i="mapXiahu">下湖</text></g>
+        <g class="compass" transform="translate(52,60)"><path d="M0,-26 L8,6 L0,0 L-8,6Z"/><text y="26" text-anchor="middle">N</text></g>
+        <g class="scale" transform="translate(40,520)"><path d="M0,0 h150 M0,-6 v12 M150,-6 v12"/><text x="75" y="-12" text-anchor="middle">5 km</text></g>
+      </svg>
+      <figcaption data-i="mapCap">下湖位於大金門東半部，屬金湖鎮溪湖里，西倚太武山，東臨大海。</figcaption>
+    </figure>
     <div class="home-grid">
       <div class="home-text">
         <p data-i="home1">呂光浯先生出身金門下湖。下湖舊名「霞湖」，位於金湖鎮溪湖里，與溪邊、復國墩、下新厝、后壟同屬一里。村落地名可溯至明朝嘉靖年間，至今已四百多年。</p>
@@ -423,7 +466,10 @@ html:is(:lang(en),:lang(es),:lang(fr)) .work .t{white-space:normal;font-size:19p
     </figure>
   </section>
 
-  <section id="farm" class="farm" aria-labelledby="farm-h">
+  <nav class="pager wrap-pg" aria-label="分頁"><a href="#art" data-i="pgArt">← 書法・書家</a><a href="#farm" data-i="pgFarm">下一頁：田園生活 →</a></nav>
+  </main>
+  <main class="page" id="pg-farm" data-page="farm" hidden>
+  <section id="farmlife" class="farm" aria-labelledby="farm-h">
     <div class="wrap">
       <div class="sec-head">
         <h2 id="farm-h" data-i="farmH">田園札記</h2><span class="en">晴耕雨讀</span>
@@ -434,6 +480,8 @@ html:is(:lang(en),:lang(es),:lang(fr)) .work .t{white-space:normal;font-size:19p
     </div>
   </section>
 
+  <nav class="pager wrap-pg" aria-label="分頁"><a href="#home" data-i="pgHome2">← 故鄉・下湖</a></nav>
+  </main>
   <section id="guest" class="guest" aria-labelledby="guest-h">
     <div class="sec-head">
       <h2 id="guest-h" data-i="guestH">觀展留言</h2><span class="en">留墨題記</span>
@@ -703,6 +751,16 @@ if(OFFSITE){
   const F=document.getElementById('gform');if(F)F.hidden=true;
   const w=document.getElementById('guest-wait');if(w)w.hidden=false;guestNote();
 }
+
+/* 分頁：#art（書法＋書家）、#home（故鄉）、#farm（田園）；#guest 留在目前分頁 */
+const PG={art:'art',top:'art',works:'art',career:'art',home:'home',farm:'farm',hometown:'home',farmlife:'farm'};let curPg=null;
+function route(){const h=decodeURIComponent(location.hash.slice(1));
+  if(h==='guest'){if(!curPg)showPg('art');return}
+  const pg=PG[h]||'art';const changed=pg!==curPg;showPg(pg);
+  if(h==='works'||h==='career'){const el=document.getElementById(h);if(el)el.scrollIntoView()}else if(changed)window.scrollTo(0,0)}
+function showPg(pg){curPg=pg;document.querySelectorAll('.page').forEach(m=>m.hidden=m.dataset.page!==pg);
+  document.querySelectorAll('.tab').forEach(a=>{if(a.dataset.tab===pg)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')})}
+window.addEventListener('hashchange',route);route();
 /* 初始語言：網址 ?lang=ja ＞ 上次選擇 ＞ 瀏覽器語言 */
 (function(){let l=null;try{l=new URLSearchParams(location.search).get('lang')}catch(e){}
   if(!l)try{l=localStorage.getItem('lang')}catch(e){}
