@@ -191,6 +191,13 @@ footer{font-size:13px;color:var(--ink-soft);padding-block:0 32px}
 .lantern .tag.l{grid-column:3}.lantern .tag.r{grid-column:1;grid-row:1}
 .lantern .tassel{width:26px;height:34px;background:linear-gradient(#2a1c14 0 10px,#b3301f 10px);clip-path:polygon(30% 0,70% 0,70% 30%,100% 100%,0 100%,30% 30%)}
 .lantern figcaption{margin-top:14px;font-size:13px;color:#ecd6c0;text-align:center;letter-spacing:.1em}
+.rites{margin:64px 0 0}
+.rites h3{font-family:var(--font-brush);font-weight:400;font-size:24px;color:#fff6e6;margin:0 0 18px}
+.rites-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.rites figure{margin:0}
+.rites img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover;border:6px solid #f3ead9;box-shadow:0 18px 30px -18px rgba(0,0,0,.6)}
+.rites figcaption{margin-top:10px;font-size:13px;color:#ecd6c0;line-height:1.6}
+@media (max-width:820px){.rites-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .film{margin:64px 0 0}
 .film-frame{position:relative;aspect-ratio:16/9;background:#2a1c14;box-shadow:0 24px 48px -24px rgba(0,0,0,.6);border:8px solid #f3ead9}
 .film-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
@@ -435,6 +442,15 @@ footer{font-size:13px;color:var(--ink-soft);padding-block:0 32px}
         <figcaption>呂氏燈號　中原文獻</figcaption>
       </figure>
     </div>
+    <div class="rites">
+      <h3>家廟奠安慶典</h3>
+      <div class="rites-grid">
+        <figure><img src="home/h388.jpg" alt="宗親身著紅衫藍袍、披掛綵帶，於呂氏家廟前合影" loading="lazy"><figcaption>宗親著禮服、披綵帶，於家廟前合影</figcaption></figure>
+        <figure><img src="home/h387.jpg" alt="宗親女眷於呂氏家廟前合影" loading="lazy"><figcaption>宗親女眷於家廟前合影</figcaption></figure>
+        <figure><img src="home/h389.jpg" alt="兩位披掛「長老」綵帶的宗親於家廟門前" loading="lazy"><figcaption>披掛「長老」綵帶的宗親</figcaption></figure>
+        <figure><img src="home/h390.jpg" alt="宗親立於「呂氏家廟」匾額下" loading="lazy"><figcaption>「呂氏家廟」匾額下</figcaption></figure>
+      </div>
+    </div>
     <figure class="film">
       <div class="film-frame"><iframe src="https://www.youtube-nocookie.com/embed/8tH5QpagMjA" title="112年下湖呂氏家廟奠安" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
       <figcaption><b>影像紀錄｜112年下湖呂氏家廟奠安</b>民國一一二年（2023），下湖呂氏家廟修繕完成後重新奠安。影片來源：金門部落・<a href="https://www.youtube.com/watch?v=8tH5QpagMjA" target="_blank" rel="noopener">在 YouTube 觀看</a></figcaption>
@@ -448,7 +464,7 @@ footer{font-size:13px;color:var(--ink-soft);padding-block:0 32px}
         <p>書寫之外，呂光浯先生在金門的紅土上耕作。蔥、高麗菜、地瓜葉、木瓜，田畦皆親手整理。</p>
       </div>
       <div class="journal" id="journal"></div>
-      <p class="works-note">攝於 2026 年 11 月 5 日，霜降之後、立冬之前。</p>
+      <p class="works-note">標註日期者攝於 2026 年 11 月 5 日，霜降之後、立冬之前。</p>
     </div>
   </section>
 
@@ -599,13 +615,24 @@ const ENTRIES=[
   {f:"f361",h:"高麗菜苗",txt:"上排是剛種下的高麗菜苗，下排是細細的蔥苗。"},
   {f:"f364",h:"一畦一畦",txt:"畦整得整整齊齊，菜苗剛種下，前面是木瓜。"},
   {f:"f363",h:"午後",txt:"太陽斜照，竹竿的影子落在蔥畦上。"},
-  {f:"f366",h:"新整的畦",txt:"剛翻好的土畦等著下種，旁邊是一片地瓜葉。"}
+  {f:"f366",h:"新整的畦",txt:"剛翻好的土畦等著下種，旁邊是一片地瓜葉。"},
+  {f:"f383",h:"菜園一隅",txt:"高麗菜、蔥與木瓜分畦種植，菜園四周以矮牆圍起。",nd:1},
+  {f:"f384",h:"玉米",txt:"一排玉米已長到膝高，後方的畦裡是剛冒芽的菜苗。",nd:1},
+  {f:"f379",h:"番茄苗",txt:"番茄苗沿著土畦一株株種下，根部覆上深色的土肥。",nd:1},
+  {f:"f380",h:"番茄",txt:"另一畦番茄，枝葉已漸漸茂密。",nd:1},
+  {f:"f376",h:"地瓜葉",txt:"一整片地瓜葉長得翠綠飽滿。",nd:1},
+  {f:"f382",h:"地瓜葉畦",txt:"前排地瓜葉正盛，後方幾畦是新種下的菜苗。",nd:1},
+  {f:"f378",h:"地瓜葉與蔥",txt:"地瓜葉與一叢青蔥比鄰而生。",nd:1},
+  {f:"f381",h:"長畦青蔥",txt:"沿著牆邊整出一條長畦，種滿青蔥。",nd:1},
+  {f:"f377",h:"高麗菜苗",txt:"新植的高麗菜苗在沙土上排列整齊。",nd:1},
+  {f:"f374",h:"香蕉",txt:"田邊坡地上的香蕉樹，葉片寬大。",nd:1},
+  {f:"f375",h:"果樹",txt:"圍牆內種著一排果樹，藍天下枝葉扶疏。",nd:1}
 ];
 const J=document.getElementById('journal');
 ENTRIES.forEach(en=>{
   const f=document.createElement('figure');f.className='entry';
   f.innerHTML=`<div class="photo"><img src="farm/${en.f}.jpg" alt="${en.h}：${en.txt}" loading="lazy"></div>
-  <figcaption><div class="term"><b>${en.h}</b><span>2026.11.5</span></div><p>${en.txt}</p></figcaption>`;
+  <figcaption><div class="term"><b>${en.h}</b>${en.nd?"":"<span>2026.11.5</span>"}</div><p>${en.txt}</p></figcaption>`;
   J.appendChild(f);
 });
 
