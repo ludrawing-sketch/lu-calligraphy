@@ -91,13 +91,21 @@ section{padding-block:80px}
 .filters button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .filters button:hover{border-color:var(--ink)}
 .works{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:48px 32px}
-.work{display:block;width:100%;min-width:0;cursor:pointer;background:none;border:0;padding:0;text-align:center;color:inherit;font:inherit}
+.work{display:block;width:100%;min-width:0;text-align:center}
+.work .open{display:block;width:100%;cursor:pointer;background:none;border:0;padding:0;text-align:center;color:inherit;font:inherit}
+.like{display:inline-flex;align-items:center;gap:6px;margin-top:8px;background:none;border:1px solid var(--line);border-radius:999px;
+  padding:2px 12px;font:inherit;font-size:13px;color:var(--ink-soft);cursor:pointer;line-height:1.7;transition:all .2s ease}
+.like:hover{border-color:var(--seal);color:var(--seal)}
+.like .h{font-size:14px;line-height:1}
+.like[aria-pressed="true"]{border-color:var(--seal);color:var(--seal);background:color-mix(in srgb,var(--seal) 8%,transparent)}
+.like[hidden]{display:none}
+.like.big{font-size:15px;padding:4px 18px;margin:0}
 .scroll{background:var(--paper-2);aspect-ratio:2/3;border-radius:2px;position:relative;overflow:hidden;
   transition:background .3s ease}
-.work:hover .scroll{background:color-mix(in srgb,var(--paper-2) 80%,var(--line))}
+.work .open:hover .scroll{background:color-mix(in srgb,var(--paper-2) 80%,var(--line))}
 .scroll img{position:absolute;inset:8%;width:84%;height:84%;object-fit:contain;
   filter:drop-shadow(0 10px 10px rgba(0,0,0,.22));transition:transform .35s ease}
-.work:hover .scroll img{transform:translateY(-3px)}
+.work .open:hover .scroll img{transform:translateY(-3px)}
 .work figcaption{display:block;margin-top:16px}
 .work .t{display:block;font-family:var(--font-brush);font-size:18px;line-height:1.5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .work .m{display:block;margin-top:2px;font-size:13px;letter-spacing:.08em;color:var(--ink-soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -516,6 +524,7 @@ footer{font-size:13px;color:var(--ink-soft);padding-block:0 32px}
       <h4>作品故事</h4>
       <p class="bg" id="v-bg"></p>
       <p class="by">書者　呂光浯</p>
+      <p style="margin:18px 0 0"><button type="button" class="like big" id="v-like" aria-pressed="false" hidden><span class="h">♡</span><span>喜歡這幅作品</span><span class="n">0</span></button></p>
       <div class="nav2"><button type="button" id="v-prev">← 上一幅</button><button type="button" id="v-next">下一幅 →</button></div>
     </div>
   </div>
@@ -566,11 +575,11 @@ const WORKS=[
 ];
 const grid=document.getElementById('works-grid');
 WORKS.forEach((w,i)=>{
-  const b=document.createElement('button');
-  b.type='button';b.className='work';b.dataset.s=w.s;b.dataset.i=i;
-  b.setAttribute('aria-label',w.t+'，'+w.s+'，點擊放大');
-  b.innerHTML=`<div class="scroll"><img src="works/${w.f}.jpg" alt="呂光浯${w.s}〈${w.t}〉" loading="lazy"></div>
-  <figcaption><span class="t">${w.t}</span><span class="m">${w.a}・${w.s}</span></figcaption>`;
+  const b=document.createElement('div');
+  b.className='work';b.dataset.s=w.s;b.dataset.i=i;
+  b.innerHTML=`<button type="button" class="open" aria-label="${w.t}，${w.s}，點擊閱讀釋文與作品故事"><div class="scroll"><img src="works/${w.f}.jpg" alt="呂光浯${w.s}〈${w.t}〉" loading="lazy"></div>
+  <figcaption><span class="t">${w.t}</span><span class="m">${w.a}・${w.s}</span></figcaption></button>
+  <button type="button" class="like" data-f="${w.f}" aria-pressed="false" hidden><span class="h">♡</span><span class="n">0</span></button>`;
   grid.appendChild(b);
 });
 document.querySelectorAll('.filters button').forEach(btn=>btn.addEventListener('click',()=>{
@@ -586,7 +595,8 @@ document.getElementById('facts').innerHTML=`<li><b>${WORKS.length}</b><span>件 
   ['楷書','行草','隸書','對聯'].map(k=>`<li><b>${CNT[k]}</b><span>${k}</span></li>`).join('');
 document.querySelectorAll('.lineage button,.hlink').forEach(b=>b.addEventListener('click',()=>openW(WORKS.findIndex(w=>w.f===b.dataset.w),b)));
 grid.addEventListener('click',e=>{
-  const b=e.target.closest('.work');if(!b)return;openW(+b.dataset.i,b)});
+  const lk=e.target.closest('.like');if(lk){doLike(lk.dataset.f);return}
+  const o=e.target.closest('.open');if(!o)return;openW(+o.parentNode.dataset.i,o)});
 function openW(i,from){const w=WORKS[i];lastFocus=from;
   const im=document.getElementById('v-big');im.src='works/'+w.f+'.jpg';im.alt='呂光浯'+w.s+'〈'+w.t+'〉';
   document.getElementById('v-title').textContent=w.t;
@@ -596,7 +606,7 @@ function openW(i,from){const w=WORKS[i];lastFocus=from;
   document.getElementById('v-src').textContent=st[1]||w.a;
   document.getElementById('v-tx').textContent=st[0];
   document.getElementById('v-bg').textContent=st[2];
-  cur=i;V.scrollTop=0;
+  cur=i;V.scrollTop=0;document.getElementById('v-like').dataset.f=w.f;paintLikes();
   if(V.hidden){V.hidden=false;document.body.style.overflow='hidden';document.getElementById('v-close').focus()}
   if(window.LANG==='s')conv(V,true);
 }
@@ -680,6 +690,24 @@ function setLang(l){window.LANG=l;conv(document.body,l==='s');document.documentE
 document.getElementById('lang').addEventListener('click',()=>setLang(window.LANG==='s'?'t':'s'));
 try{if(localStorage.getItem('lang')==='s')setLang('s')}catch(e){}
 
+
+/* 按讚：送到 Google 表單（只有一題「作品」），讚數由公開 CSV 統計；每台裝置每幅限讚一次 */
+const LK={form:"",field:"",csv:""};
+const LIKES={};let LIKED={};
+try{LIKED=JSON.parse(localStorage.getItem('liked')||'{}')}catch(e){}
+function paintLikes(){if(!LK.form)return;
+  document.querySelectorAll('.like').forEach(b=>{const f=b.dataset.f;if(!f)return;b.hidden=false;
+    const n=(LIKES[f]||0);b.querySelector('.n').textContent=n;b.setAttribute('aria-pressed',LIKED[f]?'true':'false');
+    b.querySelector('.h').textContent=LIKED[f]?'♥':'♡';b.setAttribute('aria-label',(LIKED[f]?'已按讚':'按讚')+'，目前 '+n+' 個讚')})}
+function doLike(f){if(!LK.form||LIKED[f])return;LIKED[f]=1;LIKES[f]=(LIKES[f]||0)+1;
+  try{localStorage.setItem('liked',JSON.stringify(LIKED))}catch(e){}
+  paintLikes();const d=new URLSearchParams();d.append(LK.field,f);fetch(LK.form,{method:'POST',mode:'no-cors',body:d}).catch(()=>{})}
+document.getElementById('v-like').addEventListener('click',e=>doLike(e.currentTarget.dataset.f));
+function loadLikes(){if(!LK.csv)return paintLikes();fetch(LK.csv+(LK.csv.includes('?')?'&':'?')+'t='+Date.now()).then(r=>r.text()).then(t=>{
+  const c={};csvRows(t).slice(1).forEach(r=>{const f=(r[1]||'').trim();if(/^w3\d\d$/.test(f))c[f]=(c[f]||0)+1});
+  for(const f in c)LIKES[f]=Math.max(c[f],LIKED[f]?1:0);
+  for(const f in LIKED)if(!c[f])LIKES[f]=Math.max(LIKES[f]||0,1);paintLikes()}).catch(()=>paintLikes())}
+if(/github\.io$|^localhost$|^127\.0\.0\.1$/.test(location.hostname))loadLikes();else LK.form='';
 /* 非正式網址（如預覽版）無法嵌入影片與留言，改為連到正式網站 */
 const OFFICIAL='https://ludrawing-sketch.github.io/lu-calligraphy/';
 if(!/github\.io$/.test(location.hostname)&&!/^(localhost|127\.0\.0\.1)$/.test(location.hostname)){
